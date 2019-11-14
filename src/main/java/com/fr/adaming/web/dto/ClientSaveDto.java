@@ -3,6 +3,7 @@ package com.fr.adaming.web.dto;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
 import com.fr.adaming.enumeration.TypeClient;
@@ -31,8 +32,11 @@ public class ClientSaveDto {
 	private String fullname;
 	
 	@NotNull
-	@NotEmpty
-	@NotBlank
 	private TypeClient type;
+	
+
+//	@Pattern(regexp = "[0-9]{10}")
+	@Digits(integer=10, fraction = 0)
+	private Long telephone;
 
 }

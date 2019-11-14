@@ -28,6 +28,9 @@ public abstract class User {
 	@Column(nullable = false)
 	protected String fullname;
 	
+<<<<<<< HEAD
 	@Pattern(regexp = "^[0-9]{10}$")
+=======
+>>>>>>> 2ae824fa85512f35c781226a472488140db8b1b3
 	protected Long telephone;
 }

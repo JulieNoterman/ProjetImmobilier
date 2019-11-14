@@ -2,6 +2,8 @@ package com.fr.adaming.web.controller.impl;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +28,7 @@ public class ClientControllerImpl implements IClientController{
 
 	@Override
 	@PostMapping(path = "/save")
-	public String save(@RequestBody ClientSaveDto dto) {
+	public String save(@Valid @RequestBody ClientSaveDto dto) {
 		if(service.save( new Client(dto)) != null) {
 			return "SUCCESS";
 		}else {
