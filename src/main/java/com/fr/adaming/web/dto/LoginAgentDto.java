@@ -14,7 +14,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class LoginDto {
+public class LoginAgentDto {
 
 	@Email
 	@NotNull
