@@ -27,5 +27,6 @@ public abstract class User {
 	@Column(nullable = false)
 	protected String fullname;
 	
+
 	protected Long telephone;
 }
