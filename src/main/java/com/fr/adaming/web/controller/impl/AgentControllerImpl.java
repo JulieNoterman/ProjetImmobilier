@@ -23,17 +23,17 @@ public class AgentControllerImpl implements IAgentController{
 	@Qualifier("agentServiceImpl")
 	private IAgentService service;
 
-	@RequestMapping(path = "/get-all", method = RequestMethod.GET)
+	
 	public List<Agent> getAllAgent() {
 		return service.findAll();
 	}
 
-	@RequestMapping(path = "/get-id/{id}", method = RequestMethod.GET)
+	
 	public Optional<Agent> getOneById(Long id) {
 		return service.findById(id);
 	}
 
-	@RequestMapping(path = "/save", method = RequestMethod.POST)
+	
 	public String save(@RequestBody Agent agent) {
 		if (service.save(agent) != null) {
 			return "SUCCESS";
@@ -42,7 +42,7 @@ public class AgentControllerImpl implements IAgentController{
 		}
 	}
 	
-	@RequestMapping(path = "/update", method = RequestMethod.PUT)
+	
 	public String update(@RequestBody Agent agent) {
 		if(service.update(agent) != null) {
 			return "SUCCESS";
@@ -51,13 +51,13 @@ public class AgentControllerImpl implements IAgentController{
 		}
 	}
 
-	@RequestMapping(path = "/get-delete/{id}", method = RequestMethod.DELETE)
+	
 	public void deleteById(Agent agent) {
 		service.delete(agent);
 		
 	}
 
-	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	
 	public String login(@RequestBody LoginAgentDto loginAgentDto) {
 		System.out.println(loginAgentDto);
 		if (service.login(loginAgentDto.getEmail(), loginAgentDto.getPwd()) != null) {
