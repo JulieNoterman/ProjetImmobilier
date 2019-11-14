@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.validation.constraints.Pattern;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,9 +27,5 @@ public abstract class User {
 	@Column(nullable = false)
 	protected String fullname;
 	
-<<<<<<< HEAD
-	@Pattern(regexp = "^[0-9]{10}$")
-=======
->>>>>>> 2ae824fa85512f35c781226a472488140db8b1b3
 	protected Long telephone;
 }

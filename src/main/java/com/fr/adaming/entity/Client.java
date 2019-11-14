@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fr.adaming.enumeration.TypeClient;
@@ -27,6 +28,10 @@ public class Client extends User{
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_client")
 	private List<Bien> bien;
+	
+	@ManyToOne(cascade = CascadeType.ALL )
+	@JoinColumn(name="id_agent")
+	private Agent agent;
 
 
 	public Client(ClientSaveDto dto) {
