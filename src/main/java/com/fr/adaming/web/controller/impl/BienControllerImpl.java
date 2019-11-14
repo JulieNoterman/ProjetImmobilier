@@ -29,20 +29,24 @@ public class BienControllerImpl implements IBienController {
 	
 	
 	@GetMapping(path = "/get-all")
-	@RequestMapping(path = "/get-all",method = RequestMethod.GET )
-	public List<Bien> getAllClients() {
+	public List<Bien> getAllBiens() {
 		
 		return service.findAll();
 	}
 	
+	@GetMapping(path = "/get-nonvendu")
+	public List<Bien> getBiensNonVendu() {
+		
+		return service.findNonVendu();
+	}
+	
 	@GetMapping(path = "/get-id/{id}")
-	@RequestMapping(path = "/get-id/{id}",method = RequestMethod.GET )
 	public Optional<Bien> getOneById(@PathVariable(name = "id") Long id) {
 		return service.findById(id);
 	}
 	
-	@RequestMapping(path="save", method = RequestMethod.POST)
-	public String create(@RequestBody Bien bien) {
+	@RequestMapping(path="/save", method = RequestMethod.POST)
+	public String save(@RequestBody Bien bien) {
 		if(service.save(bien) != null) {
 			return "SUCESS";}
 			else {return "FAIL";}
@@ -60,6 +64,8 @@ public class BienControllerImpl implements IBienController {
 	public void deleteById(@RequestBody Bien bien) {
 		 service.delete(bien);
 	}
+
+	
 	
 	
 	

@@ -10,9 +10,10 @@ import com.fr.adaming.entity.Bien;
 
 public interface IBienController {
 
-	public List<Bien> getAllClients();
+	public List<Bien> getAllBiens();
+	public List<Bien> getBiensNonVendu();
 	public Optional<Bien> getOneById(Long id);
-	public String create(Bien bien);
+	public String save(Bien bien);
 	public String update(Bien bien);
 	public void deleteById(Bien bien);
 }
