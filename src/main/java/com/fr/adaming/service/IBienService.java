@@ -1,5 +1,9 @@
 package com.fr.adaming.service;
 
-public class IBienService {
+import org.springframework.stereotype.Service;
 
+@Service
+public interface IBienService {
+
+	
 }
