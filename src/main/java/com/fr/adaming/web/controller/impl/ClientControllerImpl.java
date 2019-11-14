@@ -19,7 +19,7 @@ import com.fr.adaming.web.dto.ClientSaveDto;
 
 
 @RestController
-@RequestMapping(path = "api/projetimmno/client")
+@RequestMapping(path = "api/projetimmo/client")
 public class ClientControllerImpl implements IClientController{
 	
 	@Autowired

@@ -32,8 +32,6 @@ public class ClientSaveDto {
 	private String fullname;
 	
 	@NotNull
-	@NotEmpty
-	@NotBlank
 	private TypeClient type;
 	
 
