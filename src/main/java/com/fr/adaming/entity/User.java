@@ -28,6 +28,6 @@ public abstract class User {
 	@Column(nullable = false)
 	protected String fullname;
 	
-	@Pattern(regexp = "^\\+(?:[0-9] ?){6,14}[0-9]$")
+
 	protected Long telephone;
 }
