@@ -11,7 +11,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity @Getter @Setter @NoArgsConstructor @ToString
-public class User {
+public abstract class User {
 
 	@Id
 	@GeneratedValue
@@ -19,4 +19,7 @@ public class User {
 	
 	@Column(unique = true, nullable = false)
 	private String email;
+	
+	@Column(nullable = false)
+	private String fullName;
 }
