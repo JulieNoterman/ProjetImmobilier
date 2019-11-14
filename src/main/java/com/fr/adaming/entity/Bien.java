@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fr.adaming.web.dto.BienDto;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +27,7 @@ public class Bien {
 	private int prix;
 	@Column(nullable = false)
 	private boolean vendu;
+	
 	public Bien(Long id, int prix, boolean vendu) {
 		super();
 		this.id = id;
@@ -41,6 +44,15 @@ public class Bien {
 	@ManyToOne (cascade = CascadeType.ALL )
 	@JoinColumn(name="id_client")
 	private Client client;
+	
+	
+	public Bien(BienDto dto) {
+		super();		
+		this.prix = dto.getPrix();
+		this.vendu = dto.isVendu();
+	}
+	
+	
 	
 	
 }
