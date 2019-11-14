@@ -30,7 +30,7 @@ public class Client extends User{
 
 
 	public Client(ClientSaveDto dto) {
-		this.fullName = dto.getFullname();
+		this.fullname = dto.getFullname();
 		this.email = dto.getEmail();
 		this.type = dto.getType();
 	}
