@@ -1,9 +1,13 @@
 package com.fr.adaming.entity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import lombok.Getter;
@@ -23,4 +27,8 @@ public class Agent extends User {
 	private String pwd;
 	
 	private LocalDateTime dateRecrutement;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_agent")
+	private List<Client> client;
 }
