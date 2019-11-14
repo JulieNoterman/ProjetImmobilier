@@ -1,17 +1,19 @@
 package com.fr.adaming.web.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.fr.adaming.entity.Agent;
 
 public interface IAgentController {
 
 	public List<Agent> getAllAgent();
-	public Agent getOneById(Long id);
+	public Optional<Agent> getOneById(Long id);
 	public String save(Agent agent);
-	public Agent update(Agent agent);
-	public String deleteById(Long id);
-	public Agent login(String Email, String pwd);
+	public String update(Agent agent);
+	public void deleteById(Agent agent);
+	public String login(String Email, String pwd);
+
 	
 	
 	
