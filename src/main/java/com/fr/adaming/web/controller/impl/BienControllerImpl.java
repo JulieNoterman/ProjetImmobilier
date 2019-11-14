@@ -11,6 +11,6 @@ import com.fr.adaming.web.controller.IBienController;
 public class BienControllerImpl implements IBienController {
 
 	@Autowired
-	@Qualifier ("BienServiceImpl")
+	@Qualifier ("bienServiceImpl")
 	private IBienService service;
 }
