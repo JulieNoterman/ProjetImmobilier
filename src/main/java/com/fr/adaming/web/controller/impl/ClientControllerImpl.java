@@ -49,6 +49,7 @@ public class ClientControllerImpl implements IClientController{
 	}
 
 	@Override
+	@RequestMapping(path = "/delete", method = RequestMethod.DELETE)
 	public String delete(@RequestBody ClientSaveDto dto) {
 		if(service.delete( new Client(dto)) == true) {
 			return "SUCCESS";
