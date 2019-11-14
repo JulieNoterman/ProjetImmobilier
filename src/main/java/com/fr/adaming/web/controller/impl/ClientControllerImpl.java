@@ -17,7 +17,7 @@ import com.fr.adaming.web.dto.ClientSaveDto;
 
 
 @RestController
-@RequestMapping(path = "api/projetimmno/client")
+@RequestMapping(path = "api/projetimmo/client")
 public class ClientControllerImpl implements IClientController{
 	
 	@Autowired
@@ -47,6 +47,7 @@ public class ClientControllerImpl implements IClientController{
 	}
 
 	@Override
+	@RequestMapping(path = "/delete", method = RequestMethod.DELETE)
 	public String delete(@RequestBody ClientSaveDto dto) {
 		if(service.delete( new Client(dto)) == true) {
 			return "SUCCESS";

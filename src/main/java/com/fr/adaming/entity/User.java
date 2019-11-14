@@ -28,6 +28,6 @@ public abstract class User {
 	@Column(nullable = false)
 	protected String fullname;
 	
-	@Pattern(regexp = "\\d{10}")
+	@Pattern(regexp = "^[0-9]{10}$")
 	protected Long telephone;
 }
