@@ -20,7 +20,7 @@ import com.fr.adaming.web.controller.IBienController;
 
 
 @RestController
-@RequestMapping(path = "projetimmo/bien")
+@RequestMapping(path = "api/projetimmo/bien")
 public class BienControllerImpl implements IBienController {
 
 	@Autowired
@@ -28,31 +28,31 @@ public class BienControllerImpl implements IBienController {
 	private IBienService service;
 	
 	
-	@GetMapping(path = "/get-all")
+	
 	public List<Bien> getAllBiens() {
 		
 		return service.findAll();
 	}
 	
-	@GetMapping(path = "/get-nonvendu")
+	
 	public List<Bien> getBiensNonVendu() {
 		
 		return service.findNonVendu();
 	}
 	
-	@GetMapping(path = "/get-id/{id}")
+	
 	public Optional<Bien> getOneById(@PathVariable(name = "id") Long id) {
 		return service.findById(id);
 	}
 	
-	@RequestMapping(path="/save", method = RequestMethod.POST)
+	
 	public String save(@RequestBody Bien bien) {
 		if(service.save(bien) != null) {
 			return "SUCESS";}
 			else {return "FAIL";}
 	}
 	
-	@PutMapping(path="/update")
+	
 	public String update(@RequestBody Bien bien) {
 		if(service.update(bien) != null) {
 			return "SUCESS";}
@@ -60,9 +60,15 @@ public class BienControllerImpl implements IBienController {
 	}
 	
 	
-	@RequestMapping(path = "/get-delete/{id}",method = RequestMethod.DELETE )
+	
 	public void deleteById(@RequestBody Bien bien) {
 		 service.delete(bien);
+	}
+
+
+	public void venteById(@RequestBody Bien bien) {
+		service.vente(bien);
+		
 	}
 
 	
