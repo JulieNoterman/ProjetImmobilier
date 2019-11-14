@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import com.fr.adaming.enumeration.TypeClient;
+import com.fr.adaming.web.dto.ClientSaveDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,5 +27,17 @@ public class Client extends User{
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_client")
 	private List<Bien> bien;
+
+
+	public Client(ClientSaveDto dto) {
+		this.fullName = dto.getFullname();
+		this.email = dto.getEmail();
+		this.type = dto.getType();
+	}
+	
+	
+	
+	
+	
 
 }
