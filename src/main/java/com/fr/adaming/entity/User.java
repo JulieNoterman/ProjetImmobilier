@@ -20,14 +20,14 @@ public abstract class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	protected Long id;
 	
 	@Column(unique = true, nullable = false)
-	private String email;
+	protected String email;
 	
 	@Column(nullable = false)
-	private String fullName;
+	protected String fullName;
 	
 	@Pattern(regexp = "\\d{10}")
-	private Long telephone;
+	protected Long telephone;
 }
