@@ -24,7 +24,7 @@ public class ClientServiceImpl implements IClientService {
 	public Client save(Client client) {
 		Client c = new Client();
 		c.setEmail(client.getEmail());
-		c.setFullName(client.getFullName());
+		c.setFullname(client.getFullname());
 		c.setType(client.getType());
 		
 		

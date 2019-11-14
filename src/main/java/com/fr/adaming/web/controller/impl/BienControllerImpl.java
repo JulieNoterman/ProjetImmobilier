@@ -59,8 +59,8 @@ public class BienControllerImpl implements IBienController {
 			else {return "FAIL";}
 	}
 	
-	@GetMapping(path = "/get-id/{id}")
-	@RequestMapping(path = "/get-id/{id}",method = RequestMethod.DELETE )
+	
+	@RequestMapping(path = "/get-delete/{id}",method = RequestMethod.DELETE )
 	public void deleteById(@RequestBody Bien bien) {
 		 service.delete(bien);
 	}
