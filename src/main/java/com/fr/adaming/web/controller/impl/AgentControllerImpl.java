@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,9 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fr.adaming.entity.Agent;
 import com.fr.adaming.service.IAgentService;
-import com.fr.adaming.service.impl.AgentServiceImpl;
 import com.fr.adaming.web.controller.IAgentController;
-import com.fr.adaming.web.dto.LoginDto;
+import com.fr.adaming.web.dto.LoginAgentDto;
 
 @RestController
 @RequestMapping(path = "api/projetimmo/agent")
@@ -60,9 +58,9 @@ public class AgentControllerImpl implements IAgentController{
 	}
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public String login(@RequestBody LoginDto loginDto) {
-		System.out.println(loginDto);
-		if (service.login(loginDto.getEmail(), loginDto.getPwd()) != null) {
+	public String login(@RequestBody LoginAgentDto loginAgentDto) {
+		System.out.println(loginAgentDto);
+		if (service.login(loginAgentDto.getEmail(), loginAgentDto.getPwd()) != null) {
 			return "SUCCESS";
 		} else {
 			return "FAIL";
