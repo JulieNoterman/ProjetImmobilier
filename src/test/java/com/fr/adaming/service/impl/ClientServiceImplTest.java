@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import javax.validation.ConstraintViolationException;
 
 import org.junit.Rule;
 import org.junit.Test;

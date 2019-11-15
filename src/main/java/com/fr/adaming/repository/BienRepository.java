@@ -1,7 +1,6 @@
 package com.fr.adaming.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -12,7 +11,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.fr.adaming.entity.Bien;
-import com.fr.adaming.service.IBienService;
 
 @Repository
 public interface BienRepository extends JpaRepository<Bien, Long>   {

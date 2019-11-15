@@ -1,6 +1,5 @@
 package com.fr.adaming.entity;
 
-import javax.annotation.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

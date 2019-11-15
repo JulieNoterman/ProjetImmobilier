@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
-import com.fr.adaming.web.dto.AgentSaveDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
