@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -17,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.TransactionSystemException;
 
 import com.fr.adaming.entity.Bien;
 import com.fr.adaming.service.IBienService;
@@ -90,6 +93,22 @@ public class BienServiceImplTest {
 		
 	}
 	
+	
+	@Test
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void createNullBien_shouldReturnConstraintViolationExceptionDueToPrixEquals0() {
+		//prépare les inputs
+		Bien b = new Bien();
+		
+		
+		exception.expect(ConstraintViolationException.class);
+		//invoque la méthode
+		Bien returnedUser = service.save(b);
+		
+		
+		
+	}
+	
 	@Test
 	@Sql (statements = "insert into bien (id,prix,vendu) values (17000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
@@ -110,6 +129,23 @@ public class BienServiceImplTest {
 	}
 	
 	@Test
+	@Sql (statements = "insert into bien (id,prix,vendu) values (17000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void updateNullBien_shouldReturnConstraintViolationExceptionDueToPrixEquals0() {
+		//prépare les inputs
+		Bien b = new Bien();
+		b.setId(17000L);
+		
+		
+		exception.expect(TransactionSystemException.class);
+		//invoque la méthode
+		Bien returnedUser = service.update(b);
+		
+		
+		
+	}
+	
+	@Test
 	@Sql (statements = "insert into bien (id,prix,vendu) values (18000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateNotValidBien_shouldNotReturnBienWithIdNUll() {
@@ -124,6 +160,8 @@ public class BienServiceImplTest {
 		
 		assertNull(returnedUser);
 		assertNull(returnedUser.getId());
+		
+	
 		
 	}
 	
@@ -144,6 +182,41 @@ public class BienServiceImplTest {
 		Bien b = new Bien();
 		b.setId(20500L);
 		assertFalse(service.delete(b));
+	}
+	
+	@Test
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void createValidBienWithWrongPrix_shouldReturnConstraintViolationException() {
+		//prépare les inputs
+		Bien b = new Bien();
+		b.setId(15000L);
+		b.setPrix(-15000);
+		b.setVendu(false);
+		
+		exception.expect(ConstraintViolationException.class);
+		//invoque la méthode
+		Bien returnedUser = service.save(b);
+		
+		
+		
+	}
+	
+	@Test
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void createValidBienWithMinPrix_shouldReturnBienWithIdNotNUll() {
+		//prépare les inputs
+		Bien b = new Bien();
+		b.setId(15000L);
+		b.setPrix(1);
+		b.setVendu(false);
+		
+		
+		//invoque la méthode
+		Bien returnedUser = service.save(b);
+		
+		assertNotNull(returnedUser);
+		assertNotNull(returnedUser.getId());
+		
 	}
 	
 	

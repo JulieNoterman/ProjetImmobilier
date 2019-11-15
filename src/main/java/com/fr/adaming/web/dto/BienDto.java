@@ -22,7 +22,6 @@ public class BienDto {
 	@NotBlank
 	@NotEmpty
 	@NotNull
-	@Min(value = 0, message = "The value must be positive")
 	private int prix;
 	
 	

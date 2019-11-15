@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 
 import com.fr.adaming.web.dto.BienDto;
 
@@ -23,8 +24,11 @@ public class Bien {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(nullable = false )
+	@Min(value = 1, message = "The value must be positive")
 	private int prix;
+	
 	@Column(nullable = false)
 	private boolean vendu;
 	
