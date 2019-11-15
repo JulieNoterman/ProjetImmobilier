@@ -63,9 +63,9 @@ public class AgentServiceImpl implements IAgentService {
 	}
 
 	@Override
-	public Optional<Agent> findById(Long id) {
+	public Agent findById(Long id) {
 		try {
-			return dao.findById(id);
+			return dao.findById(id).get();
 		} catch (NoSuchElementException e) {
 			return null;
 		}

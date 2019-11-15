@@ -29,7 +29,7 @@ public class AgentControllerImpl implements IAgentController{
 	}
 
 	
-	public Optional<Agent> getOneById(Long id) {
+	public Agent getOneById(Long id) {
 		return service.findById(id);
 	}
 

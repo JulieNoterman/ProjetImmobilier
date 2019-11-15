@@ -12,7 +12,7 @@ public interface IAgentService {
 	public Agent update(Agent agent);
 	public boolean delete(Agent agent);
 	public Agent login(String email, String pwd);
-	public Optional<Agent> findById(Long id);
+	public Agent findById(Long id);
 		
 	
 }

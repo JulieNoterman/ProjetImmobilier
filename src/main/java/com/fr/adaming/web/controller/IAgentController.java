@@ -14,7 +14,7 @@ public interface IAgentController {
 	public List<Agent> getAllAgent();
 	
 	@RequestMapping(path = "/get-id/{id}", method = RequestMethod.GET)
-	public Optional<Agent> getOneById(Long id);
+	public Agent getOneById(Long id);
 	
 	@RequestMapping(path = "/save", method = RequestMethod.POST)
 	public String save(Agent agent);

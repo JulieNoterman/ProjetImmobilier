@@ -30,4 +30,19 @@ public class Agent extends User {
 	
 	@OneToMany(mappedBy = "agent")
 	private List<Client> client;
+
+	public Agent(String pwd, LocalDateTime dateRecrutement, List<Client> client) {
+		super();
+		this.pwd = pwd;
+		this.dateRecrutement = dateRecrutement;
+		this.client = client;
+	}
+
+	public Agent(String email, String fullname, Long telephone) {
+		super(email, fullname, telephone);
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	
 }
