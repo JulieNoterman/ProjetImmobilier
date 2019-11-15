@@ -44,14 +44,14 @@ public class BienControllerImpl implements IBienController {
 	
 	
 	public String save(@RequestBody BienDto bienDto) {
-		if(service.save(BienDtoConverter.BienToBienDto(bienDto)) != null) {
+		if(service.save(BienDtoConverter.convertToDto(bienDto)) != null) {
 			return "SUCESS";}
 			else {return "FAIL";}
 	}
 	
 	
 	public String update(@RequestBody BienDto bienDto) {
-		if(service.update(BienDtoConverter.BienToBienDto(bienDto)) != null) {
+		if(service.update(BienDtoConverter.convertToDto(bienDto)) != null) {
 			return "SUCESS";}
 			else {return "FAIL";}
 	}

@@ -1,5 +1,6 @@
 package com.fr.adaming.service.impl;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -21,7 +22,10 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.TransactionSystemException;
 
+import com.fr.adaming.entity.Agent;
 import com.fr.adaming.entity.Bien;
+import com.fr.adaming.entity.Client;
+import com.fr.adaming.enumeration.TypeClient;
 import com.fr.adaming.service.IBienService;
 
 @SpringBootTest
@@ -219,7 +223,36 @@ public class BienServiceImplTest {
 		
 	}
 	
-	
+	@Test
+	@Sql(statements = "truncate table bien", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void saveValidBienAssociatedWithClient_shouldReturnClientWithIdNotNull() {
+		//preparer les inputs
+		Bien b = new Bien();
+		b.setId(15000L);
+		b.setPrix(15000);
+		b.setVendu(false);
+		Client c = new Client();
+		c.setEmail("dylan.salos@gmail.com");
+		c.setFullname("bbbb");
+		c.setType(TypeClient.VENDEUR);
+		
+		b.setClient(c);
+		
+		
+		// invoque la methode
+		Bien returnedBien = service.save(b);
+		
+		//verifier le resultat
+		assertNotNull(returnedBien);
+		assertFalse(b.isVendu());
+		assertNotNull(returnedBien.getPrix());
+		assertNotNull(returnedBien.getClient());
+		assertThat(returnedBien.getClient()).hasFieldOrPropertyWithValue("fullname", "bbbb");
+		assertThat(returnedBien.getClient()).hasFieldOrPropertyWithValue("email", "dylan.salos@gmail.com");
+		
+		
+		assertNotNull(returnedBien.getClient().getId());
+	}
 	
 	
 	

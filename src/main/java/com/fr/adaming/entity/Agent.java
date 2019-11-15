@@ -3,12 +3,11 @@ package com.fr.adaming.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
-
-import com.fr.adaming.web.dto.AgentSaveDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +27,7 @@ public class Agent extends User {
 	
 	private LocalDateTime dateRecrutement;
 	
-	@OneToMany(mappedBy = "agent")
+	@OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)
 	private List<Client> client;
 	
 }

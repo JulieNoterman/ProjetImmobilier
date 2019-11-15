@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fr.adaming.enumeration.TypeClient;
-import com.fr.adaming.web.dto.ClientSaveDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +24,7 @@ public class Client extends User{
 	private TypeClient type;
 	
 	
-	@OneToMany(mappedBy = "client")
+	@OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
 	private List<Bien> bien;
 	
 	@ManyToOne(cascade = CascadeType.ALL )
@@ -33,11 +32,6 @@ public class Client extends User{
 	private Agent agent;
 
 
-	public Client(ClientSaveDto dto) {
-		this.fullname = dto.getFullname();
-		this.email = dto.getEmail();
-		this.type = dto.getType();
-	}
 	
 	
 	

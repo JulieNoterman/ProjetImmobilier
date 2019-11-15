@@ -2,7 +2,6 @@ package com.fr.adaming.service.impl;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -10,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.fr.adaming.entity.Bien;
 import com.fr.adaming.repository.BienRepository;
-import com.fr.adaming.service.*;
+import com.fr.adaming.service.IBienService;
 
 @Service
 public class BienServiceImpl implements IBienService {
@@ -25,7 +24,6 @@ public class BienServiceImpl implements IBienService {
 	 * @param bien - the given entity
 	 * @return updated bien if the given entity is not already in the database
 	 */
-	@Override
 	public Bien save(Bien bien) {
 		if (dao.exists(Example.of(bien))) {
 			return null;

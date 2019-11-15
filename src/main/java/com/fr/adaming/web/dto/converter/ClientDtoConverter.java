@@ -8,7 +8,7 @@ import com.fr.adaming.web.dto.ClientSaveDto;
 
 public class ClientDtoConverter {
 	
-	public static Client convert(ClientSaveDto dto) {
+	public static Client convertToDto(ClientSaveDto dto) {
 		Client client = new Client();
 		client.setEmail(dto.getEmail());
 		client.setFullname(dto.getFullname());
@@ -17,7 +17,7 @@ public class ClientDtoConverter {
 		return client;
 	}
 	
-	public static ClientSaveDto convert(Client client) {
+	public static ClientSaveDto convertToDto(Client client) {
 		ClientSaveDto dto = new ClientSaveDto();
 		dto.setEmail(client.getEmail());
 		dto.setFullname(client.getFullname());
@@ -31,7 +31,7 @@ public class ClientDtoConverter {
 	public static List<Client> convert2(List<ClientSaveDto> dtos){
 		List<Client> listClients = new ArrayList<Client>();
 		for(ClientSaveDto dto : dtos) {
-			listClients.add(ClientDtoConverter.convert(dto));
+			listClients.add(ClientDtoConverter.convertToDto(dto));
 		}
 		return listClients;
 		
@@ -40,7 +40,7 @@ public class ClientDtoConverter {
 	public static List<ClientSaveDto> convert(List<Client> clients){
 		List<ClientSaveDto> listDtos = new ArrayList<ClientSaveDto>();
 		for(Client client : clients) {
-			listDtos.add(ClientDtoConverter.convert(client));
+			listDtos.add(ClientDtoConverter.convertToDto(client));
 		}
 		return listDtos;
 	}

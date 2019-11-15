@@ -20,7 +20,7 @@ public class ClientServiceImpl implements IClientService {
 	 * @param client - the given entity
 	 * @return client if the given client didn't exist in the database - else, returns null
 	 */
-	@Override
+	
 	public Client save(Client client) {
 		Client c = new Client();
 		c.setId(client.getId());
