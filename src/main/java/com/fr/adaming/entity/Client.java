@@ -25,11 +25,11 @@ public class Client extends User{
 	private TypeClient type;
 	
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_client")
+	@OneToMany(mappedBy = "client")
 	private List<Bien> bien;
 	
 	@ManyToOne(cascade = CascadeType.ALL )
+	@JoinColumn(name = "id_agent")
 	private Agent agent;
 
 

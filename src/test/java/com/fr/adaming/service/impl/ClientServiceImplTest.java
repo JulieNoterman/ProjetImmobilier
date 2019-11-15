@@ -7,12 +7,15 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -56,7 +59,7 @@ public class ClientServiceImplTest {
 	@Test
 	@Sql(statements = "insert into client(id,email, fullname, telephone, type) values(1455454,'email5@adaming.fr', 'nom1', 6657956941, 1);", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql(statements = "delete from client where id = 1455454", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
-	public void saveNotValidClient_shouldReturnClientWithIdNull() {
+	public void saveNotValidClient_shouldReturndNull() {
 		//preparer les inputs
 		//meme client que dans le before class
 		Client c = new Client();
@@ -73,6 +76,19 @@ public class ClientServiceImplTest {
 		assertNull(returnedClient);
 		
 	}
+	
+	@Test
+	public void saveNullClient_shouldReturnNull () {
+		//preparer les inputs
+		Client c = new Client();
+		
+		exception.expect(DataIntegrityViolationException.class);
+		//invoquer la methode
+		Client returnedClient = service.save(c);
+		
+		assertNull(returnedClient);
+	}
+	
 	
 	@Test
 	@Sql(statements = "insert into client(id,email, fullname, telephone, type) values(232323,'emailAdmin@adaming.fr', 'nom1', 6657956941, 1);", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
@@ -94,7 +110,7 @@ public class ClientServiceImplTest {
 	
 	
 	@Test
-	public void updateNotExistingClient_shouldReturnClientNull() {
+	public void updateNotExistingClient_shouldReturnNull() {
 		//preparer les inputs
 		Client c = new Client();
 		c.setId(121212L);
@@ -102,7 +118,6 @@ public class ClientServiceImplTest {
 		c.setFullname("fullname");
 		c.setType(TypeClient.ACHETEUR);
 		
-		exception.expect(AssertionError.class);
 		//invoquer la methode
 		Client returnedClient = service.update(c);
 		
@@ -139,11 +154,13 @@ public class ClientServiceImplTest {
 		assertFalse(service.delete(c));
 	}
 	
+	
 	@Test
 	public void ListEmptyClient_shouldReturnEmptyList() {
 		List<Client> list = service.findAll();
 		assertTrue(list.isEmpty());
 	}
+	
 	
 	@Test
 	@Sql(statements = "insert into client(id,email, fullname, telephone, type) values(232323,'emailAdmin@adaming.fr', 'nom1', 6657956941, 1);", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
