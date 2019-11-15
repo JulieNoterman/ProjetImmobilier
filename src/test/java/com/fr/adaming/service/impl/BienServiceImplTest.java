@@ -67,7 +67,7 @@ public class BienServiceImplTest {
 		b.setVendu(false);
 		
 		
-		//invoque la méthode
+		
 		Bien returnedUser = service.save(b);
 		
 		assertNotNull(returnedUser);
@@ -79,13 +79,13 @@ public class BienServiceImplTest {
 	@Sql (statements = "insert into bien (id,prix,vendu) values (16000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createNotValidBien_shouldNotReturnBienWithIdNUll() {
-		//prépare les inputs
+		
 		Bien b = new Bien();
 		b.setId(16000L);
 		b.setPrix(15000);
 		b.setVendu(false);
 		exception.expect(NullPointerException.class);
-		//invoque la méthode
+		
 		Bien returnedUser = service.save(b);
 		
 		assertNull(returnedUser);
@@ -97,12 +97,12 @@ public class BienServiceImplTest {
 	@Test
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createNullBien_shouldReturnConstraintViolationExceptionDueToPrixEquals0() {
-		//prépare les inputs
+		
 		Bien b = new Bien();
 		
 		
 		exception.expect(ConstraintViolationException.class);
-		//invoque la méthode
+		
 		Bien returnedUser = service.save(b);
 		
 		
@@ -113,14 +113,14 @@ public class BienServiceImplTest {
 	@Sql (statements = "insert into bien (id,prix,vendu) values (17000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateValidBien_shouldReturnBienWithIdNotNull() {
-		//prépare les inputs
+		
 		Bien b = new Bien();
 		b.setId(17000L);
 		b.setPrix(700);
 		b.setVendu(true);
 		
 		
-		//invoque la méthode
+		
 		Bien returnedUser = service.update(b);
 		
 		assertNotNull(returnedUser);
@@ -132,13 +132,13 @@ public class BienServiceImplTest {
 	@Sql (statements = "insert into bien (id,prix,vendu) values (17000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateNullBien_shouldReturnConstraintViolationExceptionDueToPrixEquals0() {
-		//prépare les inputs
+		
 		Bien b = new Bien();
 		b.setId(17000L);
 		
 		
 		exception.expect(TransactionSystemException.class);
-		//invoque la méthode
+		
 		Bien returnedUser = service.update(b);
 		
 		
@@ -149,13 +149,13 @@ public class BienServiceImplTest {
 	@Sql (statements = "insert into bien (id,prix,vendu) values (18000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateNotValidBien_shouldNotReturnBienWithIdNUll() {
-		//prépare les inputs
+		
 		Bien b = new Bien();
 		b.setId(18500L);
 		b.setPrix(700);
 		b.setVendu(true);
 		exception.expect(NullPointerException.class);
-		//invoque la méthode
+		
 		Bien returnedUser = service.update(b);
 		
 		assertNull(returnedUser);
@@ -187,14 +187,14 @@ public class BienServiceImplTest {
 	@Test
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createValidBienWithWrongPrix_shouldReturnConstraintViolationException() {
-		//prépare les inputs
+		
 		Bien b = new Bien();
 		b.setId(15000L);
 		b.setPrix(-15000);
 		b.setVendu(false);
 		
 		exception.expect(ConstraintViolationException.class);
-		//invoque la méthode
+		
 		Bien returnedUser = service.save(b);
 		
 		
@@ -204,14 +204,14 @@ public class BienServiceImplTest {
 	@Test
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createValidBienWithMinPrix_shouldReturnBienWithIdNotNUll() {
-		//prépare les inputs
+		
 		Bien b = new Bien();
 		b.setId(15000L);
 		b.setPrix(1);
 		b.setVendu(false);
 		
 		
-		//invoque la méthode
+		
 		Bien returnedUser = service.save(b);
 		
 		assertNotNull(returnedUser);

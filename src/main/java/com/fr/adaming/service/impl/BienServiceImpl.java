@@ -95,7 +95,7 @@ public class BienServiceImpl implements IBienService {
 	 */
 	@Override
 	public boolean vente(Bien bien) {
-		// TODO Auto-generated method stub
+		
 		if (findById(bien.getId()) != null) {
 			dao.vente(bien.getId());
 			return true;

@@ -19,8 +19,7 @@ public class BienDto {
 	
 	private Long id;
 	
-	@NotBlank
-	@NotEmpty
+	
 	@NotNull
 	private int prix;
 	
