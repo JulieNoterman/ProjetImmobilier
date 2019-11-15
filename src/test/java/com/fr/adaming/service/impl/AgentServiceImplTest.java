@@ -11,6 +11,8 @@ import java.util.List;
 
 import javax.persistence.RollbackException;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -34,25 +36,24 @@ public class AgentServiceImplTest {
 	@Autowired
 	@Qualifier("agentServiceImpl")
 	private IAgentService service;
-	
+
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
-	
+
 	@Test
-	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, 'azerty')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = "delete from agent where id=1", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createValidAgent_shouldReturnNewAgentWithIdNotNull() {
-		
-		//preparer input
+
+		// preparer input
 		Agent a = new Agent();
-		
-		a.setId(696969L);
+
+		a.setId(1L);
 		a.setEmail("email@test.fr");
 		a.setFullname("billy");
 		a.setPwd("12345678");
 		a.setTelephone(1122336655L);
 		a.setDateRecrutement(LocalDateTime.now());
-		
+
 //		List<Client> list = new ArrayList<>();
 //		list.add(e)
 //		a.setClient(list);
@@ -60,100 +61,140 @@ public class AgentServiceImplTest {
 //		//invoquer la methode
 		Agent returnedAgent = service.save(a);
 //		
-		//verification
+		// verification
 		assertNotNull(returnedAgent);
 		assertNotNull(returnedAgent.getId());
 
 	}
-	
+
 	@Test
 	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void notCreateValidAgent_shouldNotReturnAgentWithId() {
-		
+
 		Agent a = new Agent();
 		a.setId(45L);
 		a.setEmail("email2@test.fr");
 		a.setFullname("billy");
 		a.setPwd("123456789");
 		exception.expect(AssertionError.class);
-		
+
 		Agent returnedAgent = service.save(a);
-		
+
 		assertNull(returnedAgent);
-		assertNull(returnedAgent.getId());
-		
+
 	}
-	
+
 	@Test
-	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = "insert into agent values(23, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements = "delete from agent where id=23", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createAgentWithNotValidPwd_shouldNotReturnValidAgent() {
-	
+
 		Agent a = new Agent();
 		a.setId(45L);
 		a.setEmail("email3@test.fr");
 		a.setFullname("billy");
 		a.setPwd("123456");
 		exception.expect(TransactionSystemException.class);
-		
+
 		Agent returnedAgent = service.save(a);
-		
+
 		assertNull(returnedAgent);
 		assertNull(returnedAgent.getId());
 		assertNull(returnedAgent.getPwd());
 	}
-	
+
 	@Test
 	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)	
+	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateValidAgent_shouldReturnAgentWithModification() {
-		
+
 		Agent a = new Agent();
 		a.setId(45L);
 		a.setEmail("email3@test.fr");
 		a.setFullname("Murray");
 		a.setPwd("12345678");
-		
+
 		Agent returnedAgent = service.update(a);
-		
+
 		assertNotNull(returnedAgent);
 		assertNotNull(returnedAgent.getId());
 	}
-	
+
 	@Test
 	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateNotValidAgent_shouldNotReturnAgentWithIdNull() {
-		
+
 		Agent a = new Agent();
 		a.setId(789L);
 		a.setEmail("email3@test.fr");
 		a.setFullname("Murray");
 		a.setPwd("PMOLIKUJ");
 		exception.expect(NullPointerException.class);
-		
+
 		Agent returnedAgent = service.update(a);
-		
+
 		assertNull(returnedAgent);
 		assertNull(returnedAgent.getId());
 	}
-	
+
 	@Test
 	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	public void deleteValidAgent_shouldReturnTrue() {
-		
+
 		Agent a = new Agent();
 		a.setId(45L);
 		assertTrue(service.delete(a));
 	}
-	
+
 	@Test
 	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void deleteNotValidAgent_shouldReturnFalse() {
-		
+
 		Agent a = new Agent();
 		a.setId(77L);
 		assertFalse(service.delete(a));
+	}
+
+	@Test
+	public void emptyListAgent_shouldReturnEmptyList() {
+		List<Agent> list = service.findAll();
+		assertTrue(list.isEmpty());
+	}
+
+	@Test
+	@Sql(statements = "insert into agent values(45, 'theo93@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void ListAgent_shouldReturnAgentList() {
+		List<Agent> list = service.findAll();
+		assertFalse(list.isEmpty());
+
+	}
+//	@After
+//	public void afterMethod() {
+//		System.out.println("DEBUG ");
+//	}
+	
+	@Test
+	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = "insert into agent values(45, 'theo93@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	public void testValidLogin_shouldConnectAgent() {
+		
+		Agent returnedAgent = service.login("theo93@gmail.com", "78945612");
+		
+		assertNotNull(returnedAgent);
+		
+	}
+	
+	@Test
+	@Sql(statements = "insert into agent values(45, 'theo93@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void testNotValidLogin_shouldNotConnectAgent() {
+		
+		Agent returnedAgent = service.login("theo@gmail.com", "78541236");
+		
+		assertNull(returnedAgent);
 	}
 }
