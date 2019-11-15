@@ -10,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
-import com.fr.adaming.web.dto.BienDto;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -48,12 +46,6 @@ public class Bien {
 	@JoinColumn(name="id_client")
 	private Client client;
 	
-	
-	public Bien(BienDto dto) {
-		super();		
-		this.prix = dto.getPrix();
-		this.vendu = dto.isVendu();
-	}
 	
 	
 	

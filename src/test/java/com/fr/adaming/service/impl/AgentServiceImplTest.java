@@ -1,5 +1,6 @@
 package com.fr.adaming.service.impl;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -9,10 +10,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.RollbackException;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -27,6 +24,7 @@ import org.springframework.transaction.TransactionSystemException;
 
 import com.fr.adaming.entity.Agent;
 import com.fr.adaming.entity.Client;
+import com.fr.adaming.enumeration.TypeClient;
 import com.fr.adaming.service.IAgentService;
 
 @SpringBootTest
@@ -54,13 +52,10 @@ public class AgentServiceImplTest {
 		a.setTelephone(1122336655L);
 		a.setDateRecrutement(LocalDateTime.now());
 
-//		List<Client> list = new ArrayList<>();
-//		list.add(e)
-//		a.setClient(list);
-//		
+		
 //		//invoquer la methode
 		Agent returnedAgent = service.save(a);
-//		
+		
 		// verification
 		assertNotNull(returnedAgent);
 		assertNotNull(returnedAgent.getId());
@@ -100,8 +95,7 @@ public class AgentServiceImplTest {
 		Agent returnedAgent = service.save(a);
 
 		assertNull(returnedAgent);
-		assertNull(returnedAgent.getId());
-		assertNull(returnedAgent.getPwd());
+		
 	}
 
 	@Test
@@ -136,7 +130,6 @@ public class AgentServiceImplTest {
 		Agent returnedAgent = service.update(a);
 
 		assertNull(returnedAgent);
-		assertNull(returnedAgent.getId());
 	}
 
 	@Test
@@ -172,10 +165,7 @@ public class AgentServiceImplTest {
 		assertFalse(list.isEmpty());
 
 	}
-//	@After
-//	public void afterMethod() {
-//		System.out.println("DEBUG ");
-//	}
+
 	
 	@Test
 	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
@@ -196,5 +186,43 @@ public class AgentServiceImplTest {
 		Agent returnedAgent = service.login("theo@gmail.com", "78541236");
 		
 		assertNull(returnedAgent);
+	}
+	
+	@Test
+	@Sql(statements = "delete from agent where email = 'email@test.fr'", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void saveValidAgentAssociatedWithBien_shouldReturnClientWithIdNotNull() {
+		//preparer les inputs
+		Agent a = new Agent();
+
+		a.setId(1L);
+		a.setEmail("email@test.fr");
+		a.setFullname("billy");
+		a.setPwd("12345678");
+		a.setTelephone(1122336655L);
+		a.setDateRecrutement(LocalDateTime.now());
+		
+		Client c = new Client();
+		c.setEmail("dylan.salos@gmail.com");
+		c.setFullname("aaaa");
+		c.setType(TypeClient.ACHETEUR);
+		
+		List<Client> clients = new ArrayList<Client>();
+		
+		clients.add(c);
+		
+		a.setClient(clients);
+		
+		
+		// invoque la methode
+		Agent returnedAgent = service.save(a);
+		
+		//verifier le resultat
+		assertNotNull(returnedAgent);
+		assertNotNull(returnedAgent.getEmail());
+		assertNotNull(returnedAgent.getFullname());
+		assertThat(returnedAgent.getClient()).asList().hasSize(1);
+		assertThat(returnedAgent.getClient().get(0)).hasFieldOrPropertyWithValue("fullname", "aaaa");
+		assertThat(returnedAgent.getClient().get(0)).hasFieldOrPropertyWithValue("email", "dylan.salos@gmail.com");
+
 	}
 }

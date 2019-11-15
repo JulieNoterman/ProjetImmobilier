@@ -1,23 +1,19 @@
 package com.fr.adaming.web.controller.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fr.adaming.entity.Bien;
-import com.fr.adaming.entity.Client;
 import com.fr.adaming.service.IBienService;
 import com.fr.adaming.web.controller.IBienController;
 import com.fr.adaming.web.dto.BienDto;
+import com.fr.adaming.web.dto.converter.BienDtoConverter;
 
 
 @RestController
@@ -48,14 +44,14 @@ public class BienControllerImpl implements IBienController {
 	
 	
 	public String save(@RequestBody BienDto bienDto) {
-		if(service.save(new Bien(bienDto)) != null) {
+		if(service.save(BienDtoConverter.convertToDto(bienDto)) != null) {
 			return "SUCESS";}
 			else {return "FAIL";}
 	}
 	
 	
 	public String update(@RequestBody BienDto bienDto) {
-		if(service.update(new Bien(bienDto)) != null) {
+		if(service.update(BienDtoConverter.convertToDto(bienDto)) != null) {
 			return "SUCESS";}
 			else {return "FAIL";}
 	}

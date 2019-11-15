@@ -26,7 +26,7 @@ public class ClientControllerImpl implements IClientController{
 
 	@Override
 	public String save(@Valid @RequestBody ClientSaveDto dto) {
-		if(service.save( ClientDtoConverter.convert(dto)) != null) {
+		if(service.save( ClientDtoConverter.convertToDto(dto)) != null) {
 			return "SUCCESS CREATE CLIENT";
 		}else {
 			return "FAIL CREATE CLIENT";
@@ -40,12 +40,12 @@ public class ClientControllerImpl implements IClientController{
 
 	@Override
 	public Client update(@RequestBody ClientSaveDto dto) {
-		return service.update(ClientDtoConverter.convert(dto));
+		return service.update(ClientDtoConverter.convertToDto(dto));
 	}
 
 	@Override
 	public String delete(@RequestBody ClientSaveDto dto) {
-		if(service.delete( ClientDtoConverter.convert(dto)) == true) {
+		if(service.delete( ClientDtoConverter.convertToDto(dto)) == true) {
 			return "SUCCESS DELETE CLIENT";
 		}else {
 			return "FAIL DELETE CLIENT";

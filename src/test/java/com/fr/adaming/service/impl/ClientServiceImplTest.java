@@ -1,12 +1,13 @@
 package com.fr.adaming.service.impl;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -20,6 +21,8 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.fr.adaming.entity.Agent;
+import com.fr.adaming.entity.Bien;
 import com.fr.adaming.entity.Client;
 import com.fr.adaming.enumeration.TypeClient;
 import com.fr.adaming.service.IClientService;
@@ -54,6 +57,76 @@ public class ClientServiceImplTest {
 		assertNotNull(returnedClient.getEmail());
 		assertNotNull(returnedClient.getFullname());
 		assertNotNull(returnedClient.getType());
+	}
+	
+
+	@Test
+	@Sql(statements = "delete from client where email = 'email2@adaming.fr'", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void saveValidClientAssociatedWithAgent_shouldReturnClientWithIdNotNull() {
+		//preparer les inputs
+		Client c = new Client();
+		c.setEmail("email2@adaming.fr");
+		c.setFullname("nom1");
+		c.setType(TypeClient.ACHETEUR);
+		c.setTelephone(6657956941L);
+		Agent a = new Agent();
+		a.setEmail("emailAgentForTest@shouldBeDeleted.fr");
+		a.setFullname("fullNameForTest");
+		a.setPwd("passwor4Test");
+		a.setTelephone(9876543210L);
+		c.setAgent(a);
+		
+		
+		// invoque la methode
+		Client returnedClient = service.save(c);
+		
+		//verifier le resultat
+		assertNotNull(returnedClient);
+		assertNotNull(returnedClient.getEmail());
+		assertNotNull(returnedClient.getFullname());
+		assertNotNull(returnedClient.getType());
+		assertNotNull(returnedClient.getAgent());
+		assertThat(returnedClient.getAgent()).hasFieldOrPropertyWithValue("fullname", "fullNameForTest");
+		assertThat(returnedClient.getAgent()).hasFieldOrPropertyWithValue("email", "emailAgentForTest@shouldBeDeleted.fr");
+		assertThat(returnedClient.getAgent()).hasFieldOrPropertyWithValue("pwd", "passwor4Test");
+		assertThat(returnedClient.getAgent()).hasFieldOrPropertyWithValue("telephone", 9876543210L);
+		assertNotNull(returnedClient.getAgent().getId());
+	}
+	
+	@Test
+	@Sql(statements = "delete from client where email = 'email2@adaming.fr'", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void saveValidClientAssociatedWithBien_shouldReturnClientWithIdNotNull() {
+		//preparer les inputs
+		Client c = new Client();
+		c.setEmail("email2@adaming.fr");
+		c.setFullname("nom1");
+		c.setType(TypeClient.ACHETEUR);
+		c.setTelephone(6657956941L);
+		
+		Bien b = new Bien();
+		b.setPrix(10000);
+		b.setVendu(true);
+		List<Bien> biens = new ArrayList<Bien>();
+		
+		biens.add(b);
+		
+		c.setBien(biens);
+		
+		
+		// invoque la methode
+		Client returnedClient = service.save(c);
+		
+		//verifier le resultat
+		assertNotNull(returnedClient);
+		assertNotNull(returnedClient.getEmail());
+		assertNotNull(returnedClient.getFullname());
+		assertNotNull(returnedClient.getType());
+		assertNotNull(returnedClient.getBien());
+		assertThat(returnedClient.getBien()).asList().hasSize(1);
+		assertThat(returnedClient.getBien().get(0)).hasFieldOrPropertyWithValue("id", 1L);
+		assertThat(returnedClient.getBien().get(0)).hasFieldOrPropertyWithValue("prix", 10000);
+		assertThat(returnedClient.getBien().get(0)).hasFieldOrPropertyWithValue("vendu", true);
+
 	}
 	
 	@Test

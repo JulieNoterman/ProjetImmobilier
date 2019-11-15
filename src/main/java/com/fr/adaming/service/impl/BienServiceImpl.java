@@ -24,7 +24,6 @@ public class BienServiceImpl implements IBienService {
 	 * @param bien - the given entity
 	 * @return updated bien if the given entity is not already in the database
 	 */
-	@Override
 	public Bien save(Bien bien) {
 		if (dao.exists(Example.of(bien))) {
 			return null;
