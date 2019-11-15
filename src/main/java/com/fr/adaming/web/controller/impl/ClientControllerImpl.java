@@ -5,8 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,9 +27,9 @@ public class ClientControllerImpl implements IClientController{
 	@Override
 	public String save(@Valid @RequestBody ClientSaveDto dto) {
 		if(service.save( new Client(dto)) != null) {
-			return "SUCCESS";
+			return "SUCCESS CREATE CLIENT";
 		}else {
-			return "FAIL";
+			return "FAIL CREATE CLIENT";
 		}
 	}
 
@@ -48,9 +46,9 @@ public class ClientControllerImpl implements IClientController{
 	@Override
 	public String delete(@RequestBody ClientSaveDto dto) {
 		if(service.delete( new Client(dto)) == true) {
-			return "SUCCESS";
+			return "SUCCESS DELETE CLIENT";
 		}else {
-			return "FAIL";
+			return "FAIL DELETE CLIENT";
 		}
 				
 	}

@@ -23,6 +23,7 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public Client save(Client client) {
 		Client c = new Client();
+		c.setId(client.getId());
 		c.setEmail(client.getEmail());
 		c.setFullname(client.getFullname());
 		c.setType(client.getType());
