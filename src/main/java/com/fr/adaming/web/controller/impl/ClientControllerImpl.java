@@ -27,7 +27,6 @@ public class ClientControllerImpl implements IClientController{
 
 
 	@Override
-	@PostMapping(path = "/save")
 	public String save(@Valid @RequestBody ClientSaveDto dto) {
 		if(service.save( new Client(dto)) != null) {
 			return "SUCCESS";
@@ -37,19 +36,16 @@ public class ClientControllerImpl implements IClientController{
 	}
 
 	@Override
-	@GetMapping(path = "/findall")
 	public List<Client> findAll() {
 		return service.findAll();
 	}
 
 	@Override
-	@RequestMapping(path = "/update", method=RequestMethod.PUT)
 	public Client update(@RequestBody ClientSaveDto dto) {
 		return service.update(new Client(dto));
 	}
 
 	@Override
-	@RequestMapping(path = "/delete", method = RequestMethod.DELETE)
 	public String delete(@RequestBody ClientSaveDto dto) {
 		if(service.delete( new Client(dto)) == true) {
 			return "SUCCESS";
