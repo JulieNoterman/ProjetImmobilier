@@ -17,14 +17,25 @@ public class AgentServiceImpl implements IAgentService {
 	@Autowired
 	private AgentRepository dao;
 
+	/**
+	 *List
+	 *
+	 *@return List<Agent>
+	 */
 	@Override
 	public List<Agent> findAll() {
 		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
 
-	
-	
+
+	/**
+	 *Save a given Agent in the DB
+	 *
+	 *@param Agent - the given entity
+	 *@return Create Agent if the given entity is not already in the DB, else return null
+	 */
+
 	public Agent save(Agent agent) {
 		if (dao.exists(Example.of(agent))) {
 			return null;
@@ -33,6 +44,12 @@ public class AgentServiceImpl implements IAgentService {
 		}
 	}
 
+	/**
+	 *Update a given Agent in the DB
+	 *
+	 *@param Agent - the given entity
+	 *@return updated Agent if the given entity already exist in DB, else return null.
+	 */
 	@Override
 	public Agent update(Agent agent) {
 		if (findById(agent.getId()) != null) {
@@ -43,6 +60,12 @@ public class AgentServiceImpl implements IAgentService {
 		}
 	}
 
+	/**
+	 *Delete a given Agent in the DB
+	 *
+	 *@param Agent - the given entity
+	 *@return delete Agent if the given entity already exist in DB, else return null.
+	 */
 	@Override
 	public boolean delete(Agent agent) {
 		// TODO Auto-generated method stub
@@ -54,11 +77,23 @@ public class AgentServiceImpl implements IAgentService {
 		}
 	}
 
+	/**
+	 * Connection for Agent
+	 * 
+	 * @param String email and String pwd
+	 * @return Valid connection for an Agent
+	 */
 	@Override
 	public Agent login(String email, String pwd) {
 		return dao.findByEmailAndPwd(email, pwd);
 	}
 
+	/**
+	 * Find a row in DB
+	 * 
+	 * @param id(Long)
+	 * @return Agent
+	 */
 	@Override
 	public Agent findById(Long id) {
 		try {
