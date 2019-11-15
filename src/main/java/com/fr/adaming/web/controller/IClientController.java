@@ -15,13 +15,13 @@ public interface IClientController {
 	@PostMapping(path = "/save")
 	public String save(ClientSaveDto dto);
 
-	@GetMapping(path = "/findall")
+	@GetMapping(path = "/get-all")
 	public List<Client> findAll();
 
 	@RequestMapping(path = "/update", method=RequestMethod.PUT)
 	public Client update(ClientSaveDto dto);
 
-	@RequestMapping(path = "/delete", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/get-delete", method = RequestMethod.DELETE)
 	public String delete(ClientSaveDto dto);
 
 }
