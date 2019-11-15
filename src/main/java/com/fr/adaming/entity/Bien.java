@@ -1,6 +1,5 @@
 package com.fr.adaming.entity;
 
-import javax.annotation.Generated;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
-
-import com.fr.adaming.web.dto.BienDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -49,12 +46,6 @@ public class Bien {
 	@JoinColumn(name="id_client")
 	private Client client;
 	
-	
-	public Bien(BienDto dto) {
-		super();		
-		this.prix = dto.getPrix();
-		this.vendu = dto.isVendu();
-	}
 	
 	
 	
