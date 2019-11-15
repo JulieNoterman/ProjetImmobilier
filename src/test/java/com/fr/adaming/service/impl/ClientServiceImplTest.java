@@ -16,6 +16,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -118,6 +119,18 @@ public class ClientServiceImplTest {
 		c.setFullname("fullname");
 		c.setType(TypeClient.ACHETEUR);
 		
+		//invoquer la methode
+		Client returnedClient = service.update(c);
+		
+		assertNull(returnedClient);
+	}
+	
+	@Test
+	public void updateClientNull_shouldReturnNull() {
+		//preparer les inputs
+		Client c = new Client();
+		
+		exception.expect(InvalidDataAccessApiUsageException.class);
 		//invoquer la methode
 		Client returnedClient = service.update(c);
 		

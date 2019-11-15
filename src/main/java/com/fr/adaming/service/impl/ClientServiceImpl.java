@@ -71,7 +71,6 @@ public class ClientServiceImpl implements IClientService {
 	 */
 	@Override
 	public boolean delete(Client client) {
-		// TODO Auto-generated method stub
 		if(dao.existsById(client.getId()))
 		{
 			dao.delete(client);
