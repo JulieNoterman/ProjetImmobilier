@@ -22,7 +22,7 @@ public interface IBienController {
 	public List<Bien> getBiensNonVendu();
 	
 	@GetMapping(path = "/get-id/{id}")
-	public Optional<Bien> getOneById(Long id);
+	public Bien getOneById(Long id);
 	
 	@RequestMapping(path="/save", method = RequestMethod.POST)
 	public String save(BienDto bienDto);

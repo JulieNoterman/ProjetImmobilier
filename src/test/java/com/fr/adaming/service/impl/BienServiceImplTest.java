@@ -1,7 +1,11 @@
 package com.fr.adaming.service.impl;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -28,8 +32,30 @@ public class BienServiceImplTest {
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 	
+	
+	
+	
 	@Test
-	@Sql (statements = "delete from bien where id=15000" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void EmptyListBien_shouldReturnEmptyList() {
+	
+	List<Bien> list = service.findAll();
+	assertTrue(list.isEmpty());
+
+}
+	
+	
+	@Test
+	@Sql (statements = "insert into bien (id,prix,vendu) values (21000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+		public void ListValidBien_shouldNotReturnEmptyList() {
+		
+		List<Bien> list = service.findAll();
+		assertFalse(list.isEmpty());
+	
+}
+	
+	@Test
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createValidBien_shouldReturnBienWithIdNotNUll() {
 		//prépare les inputs
 		Bien b = new Bien();
@@ -48,7 +74,7 @@ public class BienServiceImplTest {
 	
 	@Test
 	@Sql (statements = "insert into bien (id,prix,vendu) values (16000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Sql (statements = "delete from bien where id=16000" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createNotValidBien_shouldNotReturnBienWithIdNUll() {
 		//prépare les inputs
 		Bien b = new Bien();
@@ -66,7 +92,7 @@ public class BienServiceImplTest {
 	
 	@Test
 	@Sql (statements = "insert into bien (id,prix,vendu) values (17000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Sql (statements = "delete from bien where id=17000" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateValidBien_shouldReturnBienWithIdNotNull() {
 		//prépare les inputs
 		Bien b = new Bien();
@@ -84,22 +110,45 @@ public class BienServiceImplTest {
 	}
 	
 	@Test
-	@Sql (statements = "insert into bien (id,prix,vendu) values (16000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Sql (statements = "delete from bien where id=16000" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql (statements = "insert into bien (id,prix,vendu) values (18000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateNotValidBien_shouldNotReturnBienWithIdNUll() {
 		//prépare les inputs
 		Bien b = new Bien();
-		b.setId(16000L);
-		b.setPrix(15000);
-		b.setVendu(false);
+		b.setId(18500L);
+		b.setPrix(700);
+		b.setVendu(true);
 		exception.expect(NullPointerException.class);
 		//invoque la méthode
-		Bien returnedUser = service.save(b);
+		Bien returnedUser = service.update(b);
 		
 		assertNull(returnedUser);
 		assertNull(returnedUser.getId());
 		
 	}
+	
+	@Test
+	@Sql (statements = "insert into bien (id,prix,vendu) values (19000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+		public void deleteValidBien_shouldReturnTrue() {
+		
+		Bien b = new Bien();
+		b.setId(19000L);
+		assertTrue(service.delete(b));
+	}
+	
+	@Test
+	@Sql (statements = "insert into bien (id,prix,vendu) values (20000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql (statements = "delete from bien where id=20000" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+		public void deleteNotValidBien_shouldReturnTrue() {
+		
+		Bien b = new Bien();
+		b.setId(20500L);
+		assertFalse(service.delete(b));
+	}
+	
+	
+	
+	
 	
 	
 }

@@ -42,7 +42,7 @@ public class BienControllerImpl implements IBienController {
 	}
 	
 	
-	public Optional<Bien> getOneById(@PathVariable(name = "id") Long id) {
+	public Bien getOneById(@PathVariable(name = "id") Long id) {
 		return service.findById(id);
 	}
 	

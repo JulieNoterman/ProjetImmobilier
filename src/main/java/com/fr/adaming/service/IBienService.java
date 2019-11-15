@@ -17,7 +17,7 @@ public interface IBienService {
 	public Bien update(Bien bien);
 	public boolean delete(Bien bien);
 	public boolean vente(Bien bien);
-	public Optional<Bien> findById(Long id);
+	public Bien findById(Long id);
 	public List<Bien> findNonVendu();
 	
 	
