@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -29,17 +31,7 @@ public class ClientServiceImplTest {
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 	
-//	@BeforeClass
-//	public static void beforeClass() {
-//		System.out.println("Before Class Method");
-//		Client c = new Client();
-//		c.setId(151515L);
-//		c.setEmail("emailAdmin@adaming.fr");
-//		c.setFullname("Admin");
-//		c.setType(TypeClient.VENDEUR);
-//		
-//	}
-	
+
 	@Test
 	@Sql(statements = "delete from client where email = 'email2@adaming.fr'", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void saveValidClient_shouldReturnClientWithIdNotNull() {
@@ -79,7 +71,6 @@ public class ClientServiceImplTest {
 		Client returnedClient = service.save(c);
 		
 		assertNull(returnedClient);
-		assertNull(returnedClient.getId());
 		
 	}
 	
@@ -97,8 +88,8 @@ public class ClientServiceImplTest {
 		//invoquer la methode
 		Client returnedClient = service.update(c);
 		
-		assertNotNull(c);
-		assertNotNull(c.getId());
+		assertNotNull(returnedClient);
+		assertNotNull(returnedClient.getId());
 	}
 	
 	
@@ -115,7 +106,7 @@ public class ClientServiceImplTest {
 		//invoquer la methode
 		Client returnedClient = service.update(c);
 		
-		assertNull(c);
+		assertNull(returnedClient);
 	}
 	
 	@Test
@@ -147,5 +138,21 @@ public class ClientServiceImplTest {
 		//invoquer la methode
 		assertFalse(service.delete(c));
 	}
+	
+	@Test
+	public void ListEmptyClient_shouldReturnEmptyList() {
+		List<Client> list = service.findAll();
+		assertTrue(list.isEmpty());
+	}
+	
+	@Test
+	@Sql(statements = "insert into client(id,email, fullname, telephone, type) values(232323,'emailAdmin@adaming.fr', 'nom1', 6657956941, 1);", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements = "delete from client where id = 232323", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void ListNotEmptyClient_shouldReturnNotEmptyList() {
+		List<Client> list = service.findAll();
+		assertFalse(list.isEmpty());
+		
+	}
+	
 
 }
