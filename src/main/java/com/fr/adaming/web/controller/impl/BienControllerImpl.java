@@ -17,6 +17,7 @@ import com.fr.adaming.entity.Bien;
 import com.fr.adaming.entity.Client;
 import com.fr.adaming.service.IBienService;
 import com.fr.adaming.web.controller.IBienController;
+import com.fr.adaming.web.dto.BienDto;
 
 
 @RestController
@@ -46,15 +47,15 @@ public class BienControllerImpl implements IBienController {
 	}
 	
 	
-	public String save(@RequestBody Bien bien) {
-		if(service.save(bien) != null) {
+	public String save(@RequestBody BienDto bienDto) {
+		if(service.save(new Bien(bienDto)) != null) {
 			return "SUCESS";}
 			else {return "FAIL";}
 	}
 	
 	
-	public String update(@RequestBody Bien bien) {
-		if(service.update(bien) != null) {
+	public String update(@RequestBody BienDto bienDto) {
+		if(service.update(new Bien(bienDto)) != null) {
 			return "SUCESS";}
 			else {return "FAIL";}
 	}

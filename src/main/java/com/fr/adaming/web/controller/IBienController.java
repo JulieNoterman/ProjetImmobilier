@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fr.adaming.entity.Bien;
+import com.fr.adaming.web.dto.BienDto;
 
 public interface IBienController {
 	
@@ -24,10 +25,10 @@ public interface IBienController {
 	public Optional<Bien> getOneById(Long id);
 	
 	@RequestMapping(path="/save", method = RequestMethod.POST)
-	public String save(Bien bien);
+	public String save(BienDto bienDto);
 	
 	@PutMapping(path="/update")
-	public String update(Bien bien);
+	public String update(BienDto bienDto);
 	
 	@RequestMapping(path = "/get-delete/{id}",method = RequestMethod.DELETE )
 	public void deleteById(Bien bien);

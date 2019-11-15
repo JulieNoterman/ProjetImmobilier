@@ -29,4 +29,14 @@ public abstract class User {
 	
 
 	protected Long telephone;
+
+
+	public User(String email, String fullname, Long telephone) {
+		super();
+		this.email = email;
+		this.fullname = fullname;
+		this.telephone = telephone;
+	}
+	
+	
 }
