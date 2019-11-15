@@ -25,6 +25,7 @@ public class Bien {
 	private int prix;
 	@Column(nullable = false)
 	private boolean vendu;
+	
 	public Bien(Long id, int prix, boolean vendu) {
 		super();
 		this.id = id;

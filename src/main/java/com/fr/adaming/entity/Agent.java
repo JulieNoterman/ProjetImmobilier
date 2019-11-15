@@ -28,7 +28,6 @@ public class Agent extends User {
 	
 	private LocalDateTime dateRecrutement;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_agent")
+	@OneToMany(mappedBy = "agent")
 	private List<Client> client;
 }
