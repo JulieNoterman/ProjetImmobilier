@@ -3,12 +3,12 @@ package com.fr.adaming.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
+
+import com.fr.adaming.web.dto.AgentSaveDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,19 +30,9 @@ public class Agent extends User {
 	
 	@OneToMany(mappedBy = "agent")
 	private List<Client> client;
-
-	public Agent(String pwd, LocalDateTime dateRecrutement, List<Client> client) {
-		super();
-		this.pwd = pwd;
-		this.dateRecrutement = dateRecrutement;
-		this.client = client;
-	}
-
-	public Agent(String email, String fullname, Long telephone) {
-		super(email, fullname, telephone);
-		// TODO Auto-generated constructor stub
-	}
-
-	
 	
 }
+
+	
+	
+

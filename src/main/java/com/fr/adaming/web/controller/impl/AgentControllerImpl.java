@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fr.adaming.entity.Agent;
 import com.fr.adaming.service.IAgentService;
 import com.fr.adaming.web.controller.IAgentController;
+import com.fr.adaming.web.dto.AgentSaveDto;
 import com.fr.adaming.web.dto.LoginAgentDto;
+import com.fr.adaming.web.dto.converter.AgentDtoConverter;
 
 @RestController
 @RequestMapping(path = "api/projetimmo/agent")
@@ -34,8 +36,8 @@ public class AgentControllerImpl implements IAgentController{
 	}
 
 	
-	public String save(@RequestBody Agent agent) {
-		if (service.save(agent) != null) {
+	public String save(@RequestBody AgentSaveDto agentDto) {
+		if (service.save(AgentDtoConverter.convertToDto(agentDto)) != null) {
 			return "SUCCESS";
 		} else {
 			return "FAIL";
@@ -43,8 +45,8 @@ public class AgentControllerImpl implements IAgentController{
 	}
 	
 	
-	public String update(@RequestBody Agent agent) {
-		if(service.update(agent) != null) {
+	public String update(@RequestBody AgentSaveDto agentDto) {
+		if(service.update(AgentDtoConverter.convertToDto(agentDto)) != null) {
 			return "SUCCESS";
 		} else {
 			return "FAIL";
@@ -52,7 +54,7 @@ public class AgentControllerImpl implements IAgentController{
 	}
 
 	
-	public void deleteById(Agent agent) {
+	public void deleteById(@RequestBody Agent agent) {
 		service.delete(agent);
 		
 	}

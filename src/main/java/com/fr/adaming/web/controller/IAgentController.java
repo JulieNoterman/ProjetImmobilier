@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fr.adaming.entity.Agent;
+import com.fr.adaming.web.dto.AgentSaveDto;
 
 public interface IAgentController {
 
@@ -17,10 +18,10 @@ public interface IAgentController {
 	public Agent getOneById(Long id);
 	
 	@RequestMapping(path = "/save", method = RequestMethod.POST)
-	public String save(Agent agent);
+	public String save(AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/update", method = RequestMethod.PUT)
-	public String update(Agent agent);
+	public String update(AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/get-delete/{id}", method = RequestMethod.DELETE)
 	public void deleteById(Agent agent);
