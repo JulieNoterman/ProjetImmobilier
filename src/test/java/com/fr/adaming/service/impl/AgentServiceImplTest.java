@@ -189,7 +189,7 @@ public class AgentServiceImplTest {
 	}
 	
 	@Test
-	@Sql(statements = "delete from agent where email = 'email@test.fr'", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = { "delete from agent where email = 'email@test.fr'" , "delete from client where email = 'dylan.salos@gmail.com'" }, executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void saveValidAgentAssociatedWithBien_shouldReturnClientWithIdNotNull() {
 		//preparer les inputs
 		Agent a = new Agent();

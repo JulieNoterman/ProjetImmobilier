@@ -16,7 +16,6 @@ import com.fr.adaming.service.IBienService;
 public class UserServiceImplTest {
 
 	@Autowired
-	@Qualifier ("bieServiceImpl")
 	private IBienService service;
 	
 	@Test

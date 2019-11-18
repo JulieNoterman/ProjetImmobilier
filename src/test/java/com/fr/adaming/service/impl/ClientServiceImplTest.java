@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -61,7 +62,7 @@ public class ClientServiceImplTest {
 	
 
 	@Test
-	@Sql(statements = "delete from client where email = 'email2@adaming.fr'", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = {"delete from client where email = 'email2@adaming.fr'", "delete from agent where email = 'emailAgentForTest@shouldBeDeleted.fr'"}, executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void saveValidClientAssociatedWithAgent_shouldReturnClientWithIdNotNull() {
 		//preparer les inputs
 		Client c = new Client();
@@ -94,7 +95,7 @@ public class ClientServiceImplTest {
 	}
 	
 	@Test
-	@Sql(statements = "delete from client where email = 'email2@adaming.fr'", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = {"delete from client where email = 'email2@adaming.fr'", "truncate table bien"}, executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void saveValidClientAssociatedWithBien_shouldReturnClientWithIdNotNull() {
 		//preparer les inputs
 		Client c = new Client();
@@ -240,7 +241,7 @@ public class ClientServiceImplTest {
 	}
 	
 	
-	@Test
+	@Test	
 	public void ListEmptyClient_shouldReturnEmptyList() {
 		List<Client> list = service.findAll();
 		assertTrue(list.isEmpty());
