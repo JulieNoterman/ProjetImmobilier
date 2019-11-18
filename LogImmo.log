@@ -97,3 +97,11 @@
 18-11-2019 15:32:52 [RMI TCP Connection(15)-127.0.0.1] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 18-11-2019 15:32:52 [RMI TCP Connection(15)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 18-11-2019 15:32:52 [RMI TCP Connection(15)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18-11-2019 15:33:30 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Starting ProjetImmobilierApplication on IN-LY-011 with PID 9008 (started by IN-LY-011 in C:\Users\IN-LY-011\Desktop\Formation JAVA\WORKSPACE\WORKSPACE_IMMOBILIER\ProjetImmobilier)
+18-11-2019 15:33:30 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+18-11-2019 15:33:30 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : No active profile set, falling back to default profiles: default
+18-11-2019 15:33:35 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18-11-2019 15:33:36 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Started ProjetImmobilierApplication in 6.241 seconds (JVM running for 8.177)
+18-11-2019 15:33:36 [main] WARN  com.fr.adaming.ProjetImmobilierApplication : coucou
+18-11-2019 15:33:36 [main] ERROR com.fr.adaming.ProjetImmobilierApplication : BOOOOOOOOOOOB
+18-11-2019 15:33:36 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication : BOOOOOOOOOOOB2
