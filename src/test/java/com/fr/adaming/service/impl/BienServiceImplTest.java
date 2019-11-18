@@ -221,7 +221,7 @@ public class BienServiceImplTest {
 	}
 	
 	@Test
-	@Sql(statements = "truncate table bien" , executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = {"truncate table bien", "delete from client where email = 'dylan.salos@gmail.com'" }, executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void saveValidBienAssociatedWithClient_shouldReturnClientWithIdNotNull() {
 		//preparer les inputs
 		Bien b = new Bien();
