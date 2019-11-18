@@ -22,7 +22,6 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.TransactionSystemException;
 
-import com.fr.adaming.entity.Agent;
 import com.fr.adaming.entity.Bien;
 import com.fr.adaming.entity.Client;
 import com.fr.adaming.enumeration.TypeClient;
@@ -93,7 +92,6 @@ public class BienServiceImplTest {
 		Bien returnedUser = service.save(b);
 		
 		assertNull(returnedUser);
-		assertNull(returnedUser.getId());
 		
 	}
 	
@@ -163,7 +161,6 @@ public class BienServiceImplTest {
 		Bien returnedUser = service.update(b);
 		
 		assertNull(returnedUser);
-		assertNull(returnedUser.getId());
 		
 	
 		

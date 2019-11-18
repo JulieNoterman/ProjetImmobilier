@@ -24,7 +24,6 @@ public class AgentServiceImpl implements IAgentService {
 	 */
 	@Override
 	public List<Agent> findAll() {
-		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
 

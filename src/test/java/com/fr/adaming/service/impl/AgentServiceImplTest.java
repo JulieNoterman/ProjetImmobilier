@@ -10,10 +10,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.RollbackException;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -27,7 +23,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.TransactionSystemException;
 
 import com.fr.adaming.entity.Agent;
-import com.fr.adaming.entity.Bien;
 import com.fr.adaming.entity.Client;
 import com.fr.adaming.enumeration.TypeClient;
 import com.fr.adaming.service.IAgentService;
@@ -57,13 +52,10 @@ public class AgentServiceImplTest {
 		a.setTelephone(1122336655L);
 		a.setDateRecrutement(LocalDateTime.now());
 
-//		List<Client> list = new ArrayList<>();
-//		list.add(e)
-//		a.setClient(list);
-//		
+		
 //		//invoquer la methode
 		Agent returnedAgent = service.save(a);
-//		
+		
 		// verification
 		assertNotNull(returnedAgent);
 		assertNotNull(returnedAgent.getId());
@@ -103,8 +95,7 @@ public class AgentServiceImplTest {
 		Agent returnedAgent = service.save(a);
 
 		assertNull(returnedAgent);
-		assertNull(returnedAgent.getId());
-		assertNull(returnedAgent.getPwd());
+		
 	}
 
 	@Test
@@ -139,7 +130,6 @@ public class AgentServiceImplTest {
 		Agent returnedAgent = service.update(a);
 
 		assertNull(returnedAgent);
-		assertNull(returnedAgent.getId());
 	}
 
 	@Test
@@ -175,10 +165,7 @@ public class AgentServiceImplTest {
 		assertFalse(list.isEmpty());
 
 	}
-//	@After
-//	public void afterMethod() {
-//		System.out.println("DEBUG ");
-//	}
+
 	
 	@Test
 	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
@@ -234,7 +221,6 @@ public class AgentServiceImplTest {
 		assertNotNull(returnedAgent.getEmail());
 		assertNotNull(returnedAgent.getFullname());
 		assertThat(returnedAgent.getClient()).asList().hasSize(1);
-//		assertThat(returnedAgent.getClient().get(0)).hasFieldOrPropertyWithValue("id", 1L);
 		assertThat(returnedAgent.getClient().get(0)).hasFieldOrPropertyWithValue("fullname", "aaaa");
 		assertThat(returnedAgent.getClient().get(0)).hasFieldOrPropertyWithValue("email", "dylan.salos@gmail.com");
 
