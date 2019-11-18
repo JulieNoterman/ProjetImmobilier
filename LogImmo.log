@@ -1,0 +1,99 @@
+2019-11-18 15:26:56.066 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - Starting ProjetImmobilierApplication on IN-LY-011 with PID 10672 (started by IN-LY-011 in C:\Users\IN-LY-011\Desktop\Formation JAVA\WORKSPACE\WORKSPACE_IMMOBILIER\ProjetImmobilier)
+2019-11-18 15:26:56.079 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-11-18 15:26:56.082 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - No active profile set, falling back to default profiles: default
+2019-11-18 15:26:57.086 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-18 15:26:57.238 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 135ms. Found 3 repository interfaces.
+2019-11-18 15:26:57.622 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-18 15:26:57.991 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-11-18 15:26:58.005 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-18 15:26:58.006 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-11-18 15:26:58.007 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-18 15:26:58.201 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-11-18 15:26:58.201 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2055 ms
+2019-11-18 15:26:58.418 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2019-11-18 15:26:58.506 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.8.Final}
+2019-11-18 15:26:58.664 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-18 15:26:58.789 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-11-18 15:26:58.982 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-11-18 15:26:59.003 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2019-11-18 15:27:00.534 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-18 15:27:00.545 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-18 15:27:01.184 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-11-18 15:27:01.382 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-18 15:27:01.635 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-11-18 15:27:01.965 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-18 15:27:01.967 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - Started ProjetImmobilierApplication in 6.397 seconds (JVM running for 8.329)
+2019-11-18 15:27:01.969 [main] WARN  com.fr.adaming.ProjetImmobilierApplication - coucou
+2019-11-18 15:27:01.970 [main] ERROR com.fr.adaming.ProjetImmobilierApplication - BOOOOOOOOOOOB
+2019-11-18 15:27:01.970 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication - BOOOOOOOOOOOB2
+2019-11-18 15:28:29.275 [RMI TCP Connection(14)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-11-18 15:28:29.280 [RMI TCP Connection(14)-127.0.0.1] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-11-18 15:28:29.281 [RMI TCP Connection(14)-127.0.0.1] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-11-18 15:28:29.290 [RMI TCP Connection(14)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-11-18 15:28:29.308 [RMI TCP Connection(14)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2019-11-18 15:28:40.806 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - Starting ProjetImmobilierApplication on IN-LY-011 with PID 12020 (started by IN-LY-011 in C:\Users\IN-LY-011\Desktop\Formation JAVA\WORKSPACE\WORKSPACE_IMMOBILIER\ProjetImmobilier)
+2019-11-18 15:28:40.819 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+2019-11-18 15:28:40.820 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - No active profile set, falling back to default profiles: default
+2019-11-18 15:28:41.999 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-11-18 15:28:42.114 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 108ms. Found 3 repository interfaces.
+2019-11-18 15:28:42.501 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-11-18 15:28:42.847 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2019-11-18 15:28:42.869 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2019-11-18 15:28:42.870 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2019-11-18 15:28:42.871 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+2019-11-18 15:28:43.050 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2019-11-18 15:28:43.050 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2164 ms
+2019-11-18 15:28:43.282 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2019-11-18 15:28:43.369 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.8.Final}
+2019-11-18 15:28:43.513 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2019-11-18 15:28:43.638 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2019-11-18 15:28:43.832 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2019-11-18 15:28:43.852 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+2019-11-18 15:28:45.484 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2019-11-18 15:28:45.501 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-11-18 15:28:46.101 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-11-18 15:28:46.312 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-18 15:28:46.576 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2019-11-18 15:28:46.892 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2019-11-18 15:28:46.895 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - Started ProjetImmobilierApplication in 6.578 seconds (JVM running for 8.854)
+2019-11-18 15:28:46.897 [main] WARN  com.fr.adaming.ProjetImmobilierApplication - coucou
+2019-11-18 15:28:46.897 [main] ERROR com.fr.adaming.ProjetImmobilierApplication - BOOOOOOOOOOOB
+2019-11-18 15:28:46.897 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication - BOOOOOOOOOOOB2
+2019-11-18 15:29:55.910 [RMI TCP Connection(12)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2019-11-18 15:29:55.913 [RMI TCP Connection(12)-127.0.0.1] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+2019-11-18 15:29:55.918 [RMI TCP Connection(12)-127.0.0.1] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-11-18 15:29:55.923 [RMI TCP Connection(12)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2019-11-18 15:29:55.938 [RMI TCP Connection(12)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+18-11-2019 15:30:16 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - Starting ProjetImmobilierApplication on IN-LY-011 with PID 10792 (started by IN-LY-011 in C:\Users\IN-LY-011\Desktop\Formation JAVA\WORKSPACE\WORKSPACE_IMMOBILIER\ProjetImmobilier)
+18-11-2019 15:30:16 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication - Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+18-11-2019 15:30:16 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - No active profile set, falling back to default profiles: default
+18-11-2019 15:30:17 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data repositories in DEFAULT mode.
+18-11-2019 15:30:17 [main] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 112ms. Found 3 repository interfaces.
+18-11-2019 15:30:17 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+18-11-2019 15:30:18 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+18-11-2019 15:30:18 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+18-11-2019 15:30:18 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+18-11-2019 15:30:18 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.27]
+18-11-2019 15:30:18 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+18-11-2019 15:30:18 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1967 ms
+18-11-2019 15:30:18 [main] INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+18-11-2019 15:30:18 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.4.8.Final}
+18-11-2019 15:30:18 [main] INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+18-11-2019 15:30:18 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+18-11-2019 15:30:19 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+18-11-2019 15:30:19 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL57Dialect
+18-11-2019 15:30:20 [main] INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+18-11-2019 15:30:20 [main] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18-11-2019 15:30:21 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18-11-2019 15:30:21 [main] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor'
+18-11-2019 15:30:21 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+18-11-2019 15:30:22 [main] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+18-11-2019 15:30:22 [main] INFO  com.fr.adaming.ProjetImmobilierApplication - Started ProjetImmobilierApplication in 6.333 seconds (JVM running for 8.46)
+18-11-2019 15:30:22 [main] WARN  com.fr.adaming.ProjetImmobilierApplication - coucou
+18-11-2019 15:30:22 [main] ERROR com.fr.adaming.ProjetImmobilierApplication - BOOOOOOOOOOOB
+18-11-2019 15:30:22 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication - BOOOOOOOOOOOB2
+18-11-2019 15:32:52 [RMI TCP Connection(15)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+18-11-2019 15:32:52 [RMI TCP Connection(15)-127.0.0.1] INFO  org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+18-11-2019 15:32:52 [RMI TCP Connection(15)-127.0.0.1] INFO  org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18-11-2019 15:32:52 [RMI TCP Connection(15)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+18-11-2019 15:32:52 [RMI TCP Connection(15)-127.0.0.1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
