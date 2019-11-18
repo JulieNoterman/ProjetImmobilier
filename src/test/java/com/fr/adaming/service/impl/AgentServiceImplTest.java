@@ -69,14 +69,15 @@ public class AgentServiceImplTest {
 
 		Agent a = new Agent();
 		a.setId(45L);
-		a.setEmail("email2@test.fr");
-		a.setFullname("billy");
-		a.setPwd("123456789");
-		exception.expect(AssertionError.class);
+		a.setEmail("theo@gmail.com");
+		a.setFullname("theo corneloup");
+		a.setPwd("78945612");
+		exception.expect(NullPointerException.class);
 
 		Agent returnedAgent = service.save(a);
 
 		assertNull(returnedAgent);
+		assertNull(returnedAgent.getId());
 
 	}
 
@@ -130,6 +131,7 @@ public class AgentServiceImplTest {
 		Agent returnedAgent = service.update(a);
 
 		assertNull(returnedAgent);
+		assertNull(returnedAgent.getId());
 	}
 
 	@Test

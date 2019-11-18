@@ -92,6 +92,7 @@ public class BienServiceImplTest {
 		Bien returnedUser = service.save(b);
 		
 		assertNull(returnedUser);
+		assertNull(returnedUser.getId());
 		
 	}
 	
@@ -161,6 +162,7 @@ public class BienServiceImplTest {
 		Bien returnedUser = service.update(b);
 		
 		assertNull(returnedUser);
+		assertNull(returnedUser.getId());
 		
 	
 		

@@ -139,15 +139,16 @@ public class ClientServiceImplTest {
 		Client c = new Client();
 		c.setId(1455454L);
 		c.setEmail("email5@adaming.fr");
-		c.setFullname("Admin");
+		c.setFullname("nom1");
 		c.setType(TypeClient.VENDEUR);
 		c.setTelephone(6657956941L);
 		
-		exception.expect(AssertionError.class);
+		exception.expect(NullPointerException.class);
 		// invoque la methode
 		Client returnedClient = service.save(c);
 		
 		assertNull(returnedClient);
+		assertNull(returnedClient.getId());
 		
 	}
 	
