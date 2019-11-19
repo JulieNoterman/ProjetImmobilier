@@ -12,9 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class TestMvc {
 
 	@Autowired
-	private MockMvc mvc;
+	protected MockMvc mvc;
 	
-	private ObjectMapper mapper = new ObjectMapper();
+	protected ObjectMapper mapper = new ObjectMapper();
 	
 	
 	

@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fr.adaming.entity.Bien;
@@ -17,7 +14,6 @@ import com.fr.adaming.web.dto.converter.BienDtoConverter;
 
 
 @RestController
-@RequestMapping(path = "api/projetimmo/bien")
 public class BienControllerImpl implements IBienController {
 
 	@Autowired
@@ -38,29 +34,40 @@ public class BienControllerImpl implements IBienController {
 	}
 	
 	
-	public BienDto getOneById(@PathVariable(name = "id") Long id) {
+	public BienDto getOneById(Long id) {
 		return BienDtoConverter.convertToBien(service.findById(id));
 	}
 	
 	
-	public BienDto save(@RequestBody BienDto bienDto) {
-		return BienDtoConverter.convertToBien(service.save(BienDtoConverter.convertToDto(bienDto))); 
+	public BienDto save(BienDto bienDto) {
+		Bien b = service.save(BienDtoConverter.convertToDto(bienDto));
+		
+		if (b != null) {
+			return BienDtoConverter.convertToBien(b); 
+		}
+		return null;
 		
 	}
 	
 	
-	public BienDto update(@RequestBody BienDto bienDto) {
-		return BienDtoConverter.convertToBien((service.update(BienDtoConverter.convertToDto(bienDto))));
+	public BienDto update(BienDto bienDto) {
+		Bien b = service.update(BienDtoConverter.convertToDto(bienDto));
+		
+		if (b != null) {
+			return BienDtoConverter.convertToBien(b); 
+		}
+		return null;
+		
 	}
 	
 	
 	
-	public void deleteById(@RequestBody Bien bien) {
+	public void delete(Bien bien) {
 		 service.delete(bien);
 	}
 
 
-	public void venteById(@RequestBody Bien bien) {
+	public void venteById(Bien bien) {
 		service.vente(bien);
 		
 	}

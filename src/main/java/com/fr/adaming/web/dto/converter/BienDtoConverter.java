@@ -18,7 +18,7 @@ public class BienDtoConverter {
 		bien.setId(bienDto.getId());
 		bien.setPrix(bienDto.getPrix());
 		bien.setVendu(bienDto.isVendu());
-		
+		bien.setClient(bienDto.getClient());
 		return bien;
 		
 		
@@ -29,6 +29,7 @@ public class BienDtoConverter {
 		bienDto.setId(bien.getId());
 		bienDto.setPrix(bien.getPrix());
 		bienDto.setVendu(bien.isVendu());
+		bienDto.setClient(bien.getClient());
 		return bienDto;
 	}
 	

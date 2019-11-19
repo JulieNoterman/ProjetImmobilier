@@ -22,8 +22,7 @@ public class Bien {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false )
-	@Min(value = 1, message = "The value must be positive")
+	@Column(nullable = false )	
 	private int prix;
 	
 	@Column(nullable = false)

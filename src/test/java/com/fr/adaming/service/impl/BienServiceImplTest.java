@@ -81,7 +81,7 @@ public class BienServiceImplTest {
 	@Test
 	@Sql (statements = "insert into bien (id,prix,vendu) values (16000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
-	public void createNotValidBien_shouldNotReturnBienWithIdNUll() {
+	public void createExistingBien_shouldNotReturnBienWithIdNUll() {
 		
 		Bien b = new Bien();
 		b.setId(16000L);
@@ -151,7 +151,7 @@ public class BienServiceImplTest {
 	@Test
 	@Sql (statements = "insert into bien (id,prix,vendu) values (18000,15000,false)" ,executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "truncate table bien" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
-	public void updateNotValidBien_shouldNotReturnBienWithIdNUll() {
+	public void updateDifferentIdBien_shouldNotReturnBienWithIdNUll() {
 		
 		Bien b = new Bien();
 		b.setId(18500L);
