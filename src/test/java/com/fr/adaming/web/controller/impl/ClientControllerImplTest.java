@@ -42,6 +42,7 @@ import com.fr.adaming.web.dto.converter.ClientDtoConverter;
 @RunWith(SpringRunner.class)
 public class ClientControllerImplTest extends TestMvc {
 
+<<<<<<< HEAD
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
 
@@ -330,4 +331,8 @@ public class ClientControllerImplTest extends TestMvc {
 		assertEquals("", mvcresult);
 	}
 
+=======
+	
+	
+>>>>>>> 6ae8cdeb2057fed50dc4ef6ac57b5b1660dc007e
 }
