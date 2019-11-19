@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fr.adaming.entity.Client;
 import com.fr.adaming.web.dto.ClientSaveDto;
 
+@RequestMapping(path = "api/projetimmo/client")
 public interface IClientController {
 
 	@PostMapping(path = "/save")

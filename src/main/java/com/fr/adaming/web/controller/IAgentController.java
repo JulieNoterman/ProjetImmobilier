@@ -9,6 +9,7 @@ import com.fr.adaming.entity.Agent;
 import com.fr.adaming.web.dto.AgentSaveDto;
 import com.fr.adaming.web.dto.LoginAgentDto;
 
+@RequestMapping(path = "api/projetimmo/agent")
 public interface IAgentController {
 
 	@RequestMapping(path = "/get-all", method = RequestMethod.GET)

@@ -135,7 +135,6 @@ public class ClientServiceImplTest {
 	@Sql(statements = "delete from client where id = 1455454", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void saveNotValidClient_shouldReturndNull() {
 		//preparer les inputs
-		//meme client que dans le before class
 		Client c = new Client();
 		c.setId(1455454L);
 		c.setEmail("email5@adaming.fr");

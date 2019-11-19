@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fr.adaming.entity.Agent;
@@ -16,7 +15,6 @@ import com.fr.adaming.web.dto.LoginAgentDto;
 import com.fr.adaming.web.dto.converter.AgentDtoConverter;
 
 @RestController
-@RequestMapping(path = "api/projetimmo/agent")
 public class AgentControllerImpl implements IAgentController{
 
 	@Autowired

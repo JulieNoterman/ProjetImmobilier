@@ -10,6 +10,7 @@ public class ClientDtoConverter {
 	
 	public static Client convertToDto(ClientSaveDto dto) {
 		Client client = new Client();
+		client.setId(dto.getId());
 		client.setEmail(dto.getEmail());
 		client.setFullname(dto.getFullname());
 		client.setTelephone(dto.getTelephone());
@@ -19,6 +20,7 @@ public class ClientDtoConverter {
 	
 	public static ClientSaveDto convertToDto(Client client) {
 		ClientSaveDto dto = new ClientSaveDto();
+		dto.setId(client.getId());
 		dto.setEmail(client.getEmail());
 		dto.setFullname(client.getFullname());
 		dto.setTelephone(client.getTelephone());

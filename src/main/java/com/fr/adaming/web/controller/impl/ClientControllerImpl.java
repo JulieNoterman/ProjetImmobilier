@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fr.adaming.entity.Client;
@@ -17,7 +16,6 @@ import com.fr.adaming.web.dto.converter.ClientDtoConverter;
 
 
 @RestController
-@RequestMapping(path = "api/projetimmo/client")
 public class ClientControllerImpl implements IClientController{
 	
 	@Autowired
@@ -26,8 +24,9 @@ public class ClientControllerImpl implements IClientController{
 
 	@Override
 	public ClientSaveDto save(@Valid @RequestBody ClientSaveDto dto) {
-		if(service.save( ClientDtoConverter.convertToDto(dto)) != null) {
-			return dto;
+		Client c = service.save( ClientDtoConverter.convertToDto(dto));
+		if(c != null) {
+			return ClientDtoConverter.convertToDto(c);
 		}else {
 			return null;
 		}
@@ -39,12 +38,17 @@ public class ClientControllerImpl implements IClientController{
 	}
 
 	@Override
-	public ClientSaveDto update(@RequestBody ClientSaveDto dto) {
-		return ClientDtoConverter.convertToDto(service.update(ClientDtoConverter.convertToDto(dto)));
+	public ClientSaveDto update(@Valid @RequestBody ClientSaveDto dto) {
+		Client c = service.update(ClientDtoConverter.convertToDto(dto));
+		if ( c != null) {
+			return ClientDtoConverter.convertToDto(c);
+		}else {
+			return null;
+		}
 	}
 
 	@Override
-	public ClientSaveDto delete(@RequestBody ClientSaveDto dto) {
+	public ClientSaveDto delete(@Valid @RequestBody ClientSaveDto dto) {
 		if(service.delete( ClientDtoConverter.convertToDto(dto)) == true) {
 			return dto;
 		}else {
