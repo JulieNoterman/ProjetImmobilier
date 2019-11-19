@@ -1,7 +1,9 @@
 package com.fr.adaming.web.controller.impl;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -9,6 +11,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.io.UnsupportedEncodingException;
@@ -202,31 +206,31 @@ public class ClientControllerImplTest extends TestMvc {
 		
 	}
 	
-	@Test
-	@Sql(statements = "delete from client where id = 1455454", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
-	public void saveClientWitEmailNull_shouldReturndNull() throws UnsupportedEncodingException, JsonProcessingException, Exception {
-		//preparer les inputs
-		ClientSaveDto c = new ClientSaveDto();
-		c.setId(1455454L);
-		c.setEmail(null);
-		c.setFullname("nom1");
-		c.setType(TypeClient.ACHETEUR);
-		c.setTelephone(6657956941L);
-		
-//		exception.expect(DataIntegrityViolationException.class);
-//		exception.expect(AssertionError.class);
-//		exception.expect(ConstraintViolationException.class);
-
-		String mvcresult = mvc
-				.perform(post("/api/projetimmo/client/save").contentType(MediaType.APPLICATION_JSON)
-						.content(mapper.writeValueAsString(c)))
-				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-
-		ClientSaveDto dtoResult = mapper.readValue(mvcresult, ClientSaveDto.class);
-		
-		assertNull(dtoResult);
-		
-	}
+//	@Test
+//	@Sql(statements = "delete from client where id = 1455454", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+//	public void saveClientWitEmailNull_shouldReturndNull() throws UnsupportedEncodingException, JsonProcessingException, Exception {
+//		//preparer les inputs
+//		ClientSaveDto c = new ClientSaveDto();
+//		c.setId(1455454L);
+//		c.setEmail(null);
+//		c.setFullname("nom1");
+//		c.setType(TypeClient.ACHETEUR);
+//		c.setTelephone(6657956941L);
+//		
+////		exception.expect(DataIntegrityViolationException.class);
+////		exception.expect(AssertionError.class);
+////		exception.expect(ConstraintViolationException.class);
+//
+//		String mvcresult = mvc
+//				.perform(post("/api/projetimmo/client/save").contentType(MediaType.APPLICATION_JSON)
+//						.content(mapper.writeValueAsString(c)))
+//				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+//
+//		ClientSaveDto dtoResult = mapper.readValue(mvcresult, ClientSaveDto.class);
+//		
+//		assertNull(dtoResult);
+//		
+//	}
 	
 	
 //	@Test
@@ -280,6 +284,23 @@ public class ClientControllerImplTest extends TestMvc {
 		
 	}
 	
+	@Test
+	public void deleteNotExistClient_shouldReturnFalse() throws UnsupportedEncodingException, JsonProcessingException, Exception {
+		//preparer les inputs
+		Client c = new Client();
+		c.setId(232323L);
+		c.setEmail("emailAdmin@adaming.fr");
+		c.setFullname("Admin2");
+		c.setType(TypeClient.ACHETEUR);
+		
+		String mvcresult = mvc
+				.perform(delete("/api/projetimmo/client/get-delete").contentType(MediaType.APPLICATION_JSON)
+						.content(mapper.writeValueAsString(c)))
+				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+
+		assertEquals("", mvcresult);
+	}
+	
 	
 	
 
@@ -319,8 +340,6 @@ public class ClientControllerImplTest extends TestMvc {
 		c.setType(TypeClient.ACHETEUR);
 		
 		
-//		exception.expect(NullPointerException.class);
-//		exception.expect(AssertionError.class);
 		
 		String mvcresult = mvc
 				.perform(put("/api/projetimmo/client/update").contentType(MediaType.APPLICATION_JSON)
@@ -329,6 +348,31 @@ public class ClientControllerImplTest extends TestMvc {
 
 
 		assertEquals("", mvcresult);
+	}
+	
+	
+	@Test	
+	public void ListEmptyClient_shouldReturnEmptyList() throws UnsupportedEncodingException, Exception {
+		String mvcresult = mvc.perform(get("/api/projetimmo/client/get-all").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+				
+				
+				
+				
+				assertEquals("[]",mvcresult);
+	}
+	
+	
+	@Test
+	@Sql(statements = "insert into client(id,email, fullname, telephone, type) values(232323,'emailAdmin@adaming.fr', 'nom1', 6657956941, 1);", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements = "delete from client where id = 232323", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void ListNotEmptyClient_shouldReturnNotEmptyList() throws Exception {
+		
+		mvc.perform(get("/api/projetimmo/client/get-all").contentType(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$[0].id", is(232323)));		
+		
 	}
 
 
