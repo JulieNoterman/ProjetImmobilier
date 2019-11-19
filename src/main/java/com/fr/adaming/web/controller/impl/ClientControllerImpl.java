@@ -25,30 +25,30 @@ public class ClientControllerImpl implements IClientController{
 
 
 	@Override
-	public String save(@Valid @RequestBody ClientSaveDto dto) {
+	public ClientSaveDto save(@Valid @RequestBody ClientSaveDto dto) {
 		if(service.save( ClientDtoConverter.convertToDto(dto)) != null) {
-			return "SUCCESS CREATE CLIENT";
+			return dto;
 		}else {
-			return "FAIL CREATE CLIENT";
+			return null;
 		}
 	}
 
 	@Override
-	public List<Client> findAll() {
-		return service.findAll();
+	public List<ClientSaveDto> findAll() {
+		return ClientDtoConverter.convert(service.findAll());
 	}
 
 	@Override
-	public Client update(@RequestBody ClientSaveDto dto) {
-		return service.update(ClientDtoConverter.convertToDto(dto));
+	public ClientSaveDto update(@RequestBody ClientSaveDto dto) {
+		return ClientDtoConverter.convertToDto(service.update(ClientDtoConverter.convertToDto(dto)));
 	}
 
 	@Override
-	public String delete(@RequestBody ClientSaveDto dto) {
+	public ClientSaveDto delete(@RequestBody ClientSaveDto dto) {
 		if(service.delete( ClientDtoConverter.convertToDto(dto)) == true) {
-			return "SUCCESS DELETE CLIENT";
+			return dto;
 		}else {
-			return "FAIL DELETE CLIENT";
+			return null;
 		}
 				
 	}

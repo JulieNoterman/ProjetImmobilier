@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fr.adaming.entity.Agent;
 import com.fr.adaming.web.dto.AgentSaveDto;
+import com.fr.adaming.web.dto.LoginAgentDto;
 
 public interface IAgentController {
 

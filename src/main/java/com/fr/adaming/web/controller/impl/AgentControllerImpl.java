@@ -50,20 +50,24 @@ public class AgentControllerImpl implements IAgentController{
 	}
 
 	
-	public String login(@RequestBody LoginAgentDto loginAgentDto) {
+	public LoginAgentDto login(@RequestBody LoginAgentDto loginAgentDto) {
 		System.out.println(loginAgentDto);
 		if (service.login(loginAgentDto.getEmail(), loginAgentDto.getPwd()) != null) {
-			return "SUCCESS";
+			return loginAgentDto;
 		} else {
-			return "FAIL";
+			return null;
 	}
 
 
 	}
 
 	@Override
-	public String login(String Email, String pwd) {
-		// TODO Auto-generated method stub
-		return null;
+	public String login(String email, String pwd) {
+		if(service.login(email, pwd) != null) {
+			return "SUCCESS";
+		}else {
+			return "FAIL";
+		}
+		
 	}
 }
