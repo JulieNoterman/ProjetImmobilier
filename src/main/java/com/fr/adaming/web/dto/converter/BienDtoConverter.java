@@ -40,7 +40,7 @@ public class BienDtoConverter {
 		return list;
 	}
 	
-	public static List<BienDto> convertAgent(List<Bien> bien) {
+	public static List<BienDto> convertBien(List<Bien> bien) {
 		List<BienDto> list = new ArrayList<>();
 		for(Bien dto : bien) {
 			list.add(BienDtoConverter.convertToBien(dto));

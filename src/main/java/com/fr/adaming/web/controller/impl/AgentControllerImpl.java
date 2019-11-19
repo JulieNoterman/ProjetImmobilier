@@ -24,31 +24,23 @@ public class AgentControllerImpl implements IAgentController{
 	private IAgentService service;
 
 	
-	public List<Agent> getAllAgent() {
-		return service.findAll();
+	public List<AgentSaveDto> getAllAgent() {
+		return AgentDtoConverter.convertAgent(service.findAll());
 	}
 
 	
-	public Agent getOneById(Long id) {
-		return service.findById(id);
+	public AgentSaveDto getOneById(Long id) {
+		return AgentDtoConverter.convertToAgent(service.findById(id));
 	}
 
 	
-	public String save(@RequestBody AgentSaveDto agentDto) {
-		if (service.save(AgentDtoConverter.convertToDto(agentDto)) != null) {
-			return "SUCCESS";
-		} else {
-			return "FAIL";
-		}
+	public AgentSaveDto save(@RequestBody AgentSaveDto agentDto) {
+		return AgentDtoConverter.convertToAgent(service.save(AgentDtoConverter.convertToDto(agentDto)));
 	}
 	
 	
-	public String update(@RequestBody AgentSaveDto agentDto) {
-		if(service.update(AgentDtoConverter.convertToDto(agentDto)) != null) {
-			return "SUCCESS";
-		} else {
-			return "FAIL";
-		}
+	public AgentSaveDto update(@RequestBody AgentSaveDto agentDto) {
+		return AgentDtoConverter.convertToAgent(service.update(AgentDtoConverter.convertToDto(agentDto)));
 	}
 
 	

@@ -26,34 +26,31 @@ public class BienControllerImpl implements IBienController {
 	
 	
 	
-	public List<Bien> getAllBiens() {
+	public List<BienDto> getAllBiens() {
 		
-		return service.findAll();
+		return BienDtoConverter.convertBien(service.findAll());
 	}
 	
 	
-	public List<Bien> getBiensNonVendu() {
+	public List<BienDto> getBiensNonVendu() {
 		
-		return service.findNonVendu();
+		return BienDtoConverter.convertBien(service.findNonVendu());
 	}
 	
 	
-	public Bien getOneById(@PathVariable(name = "id") Long id) {
-		return service.findById(id);
+	public BienDto getOneById(@PathVariable(name = "id") Long id) {
+		return BienDtoConverter.convertToBien(service.findById(id));
 	}
 	
 	
-	public String save(@RequestBody BienDto bienDto) {
-		if(service.save(BienDtoConverter.convertToDto(bienDto)) != null) {
-			return "SUCESS";}
-			else {return "FAIL";}
+	public BienDto save(@RequestBody BienDto bienDto) {
+		return BienDtoConverter.convertToBien(service.save(BienDtoConverter.convertToDto(bienDto))); 
+		
 	}
 	
 	
-	public String update(@RequestBody BienDto bienDto) {
-		if(service.update(BienDtoConverter.convertToDto(bienDto)) != null) {
-			return "SUCESS";}
-			else {return "FAIL";}
+	public BienDto update(@RequestBody BienDto bienDto) {
+		return BienDtoConverter.convertToBien((service.update(BienDtoConverter.convertToDto(bienDto))));
 	}
 	
 	

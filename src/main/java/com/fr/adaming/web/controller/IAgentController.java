@@ -11,16 +11,16 @@ import com.fr.adaming.web.dto.AgentSaveDto;
 public interface IAgentController {
 
 	@RequestMapping(path = "/get-all", method = RequestMethod.GET)
-	public List<Agent> getAllAgent();
+	public List<AgentSaveDto> getAllAgent();
 	
 	@RequestMapping(path = "/get-id/{id}", method = RequestMethod.GET)
-	public Agent getOneById(Long id);
+	public AgentSaveDto getOneById(Long id);
 	
 	@RequestMapping(path = "/save", method = RequestMethod.POST)
-	public String save(AgentSaveDto agentDto);
+	public AgentSaveDto save(AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/update", method = RequestMethod.PUT)
-	public String update(AgentSaveDto agentDto);
+	public AgentSaveDto update(AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/get-delete/{id}", method = RequestMethod.DELETE)
 	public void deleteById(Agent agent);

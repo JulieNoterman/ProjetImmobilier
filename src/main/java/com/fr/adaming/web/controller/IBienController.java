@@ -13,19 +13,19 @@ import com.fr.adaming.web.dto.BienDto;
 public interface IBienController {
 	
 	@GetMapping(path = "/get-all")
-	public List<Bien> getAllBiens();
+	public List<BienDto> getAllBiens();
 	
 	@GetMapping(path = "/get-nonvendu")
-	public List<Bien> getBiensNonVendu();
+	public List<BienDto> getBiensNonVendu();
 	
 	@GetMapping(path = "/get-id/{id}")
-	public Bien getOneById(Long id);
+	public BienDto getOneById(Long id);
 	
 	@RequestMapping(path="/save", method = RequestMethod.POST)
-	public String save(BienDto bienDto);
+	public BienDto save(BienDto bienDto);
 	
 	@PutMapping(path="/update")
-	public String update(BienDto bienDto);
+	public BienDto update(BienDto bienDto);
 	
 	@RequestMapping(path = "/get-delete/{id}",method = RequestMethod.DELETE )
 	public void deleteById(Bien bien);
