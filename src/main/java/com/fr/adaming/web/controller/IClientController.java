@@ -13,15 +13,15 @@ import com.fr.adaming.web.dto.ClientSaveDto;
 public interface IClientController {
 
 	@PostMapping(path = "/save")
-	public String save(ClientSaveDto dto);
+	public ClientSaveDto save(ClientSaveDto dto);
 
 	@GetMapping(path = "/get-all")
-	public List<Client> findAll();
+	public List<ClientSaveDto> findAll();
 
 	@RequestMapping(path = "/update", method=RequestMethod.PUT)
-	public Client update(ClientSaveDto dto);
+	public ClientSaveDto update(ClientSaveDto dto);
 
 	@RequestMapping(path = "/get-delete", method = RequestMethod.DELETE)
-	public String delete(ClientSaveDto dto);
+	public ClientSaveDto delete(ClientSaveDto dto);
 
 }
