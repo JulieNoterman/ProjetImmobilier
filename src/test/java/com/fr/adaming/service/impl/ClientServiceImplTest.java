@@ -141,11 +141,8 @@ public class ClientServiceImplTest {
 		c.setType(TypeClient.VENDEUR);
 		c.setTelephone(6657956941L);
 		
-<<<<<<< HEAD
 		//exception.expect(NullPointException.class);
-=======
-//		exception.expect(NullPointerException.class);
->>>>>>> 7fd54d370d98abf0eaa1f19b2c2f0e002a2b6dd2
+
 		// invoque la methode
 		Client returnedClient = service.save(c);
 		
