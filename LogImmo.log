@@ -1774,6 +1774,15 @@ insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, nul
 =======
 >>>>>>> 506389e18c9745b89a27ed05beb8e80b897b1aab
 >>>>>>> 427a9044e7051c7dd344fba5151f481bc7428840
+<<<<<<< HEAD
+20-11-2019 11:29:43 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 11:29:45 [main] WARN  org.hibernate.engine.jdbc.spi.SqlExceptionHelper : SQL Error: 23502, SQLState: 23502
+20-11-2019 11:29:45 [main] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper : NULL non permis pour la colonne "EMAIL"
+NULL not allowed for column "EMAIL"; SQL statement:
+insert into client (email, fullname, telephone, id_agent, type, id) values (?, ?, ?, ?, ?, ?) [23502-200]
+20-11-2019 11:31:03 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 11:31:30 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+=======
 20-11-2019 11:27:33 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 20-11-2019 11:27:36 [main] WARN  org.hibernate.engine.jdbc.spi.SqlExceptionHelper : SQL Error: 23502, SQLState: 23502
 20-11-2019 11:27:36 [main] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper : NULL non permis pour la colonne "EMAIL"
@@ -2140,6 +2149,7 @@ insert into client (email, fullname, telephone, id_agent, type, id) values (?, ?
 20-11-2019 11:31:52 [main] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper : NULL non permis pour la colonne "EMAIL"
 NULL not allowed for column "EMAIL"; SQL statement:
 insert into client (email, fullname, telephone, id_agent, type, id) values (?, ?, ?, ?, ?, ?) [23502-200]
+<<<<<<< HEAD
 20-11-2019 11:33:02 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
 20-11-2019 11:33:05 [main] WARN  org.hibernate.engine.jdbc.spi.SqlExceptionHelper : SQL Error: 23502, SQLState: 23502
 20-11-2019 11:33:05 [main] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper : NULL non permis pour la colonne "EMAIL"
@@ -8692,3 +8702,37 @@ List of constraint violations:[
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:830)
+=======
+>>>>>>> 7fd54d370d98abf0eaa1f19b2c2f0e002a2b6dd2
+20-11-2019 14:30:06 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Starting ProjetImmobilierApplication on IN-LY-058 with PID 4124 (C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier\target\classes started by IN-LY-058 in C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier)
+20-11-2019 14:30:06 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+20-11-2019 14:30:06 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : No active profile set, falling back to default profiles: default
+20-11-2019 14:30:09 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 14:30:09 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Started ProjetImmobilierApplication in 3.945 seconds (JVM running for 6.755)
+20-11-2019 14:42:19 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Starting ProjetImmobilierApplication on IN-LY-058 with PID 16108 (C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier\target\classes started by IN-LY-058 in C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier)
+20-11-2019 14:42:19 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+20-11-2019 14:42:19 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : No active profile set, falling back to default profiles: default
+20-11-2019 14:42:22 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 14:42:23 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Started ProjetImmobilierApplication in 4.12 seconds (JVM running for 5.422)
+20-11-2019 15:21:55 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Starting ProjetImmobilierApplication on IN-LY-058 with PID 7208 (C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier\target\classes started by IN-LY-058 in C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier)
+20-11-2019 15:21:55 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+20-11-2019 15:21:55 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : No active profile set, falling back to default profiles: default
+20-11-2019 15:21:58 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 15:21:59 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Started ProjetImmobilierApplication in 3.707 seconds (JVM running for 4.829)
+20-11-2019 15:22:59 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Starting ProjetImmobilierApplication on IN-LY-058 with PID 7848 (C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier\target\classes started by IN-LY-058 in C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier)
+20-11-2019 15:22:59 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+20-11-2019 15:22:59 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : No active profile set, falling back to default profiles: default
+20-11-2019 15:23:02 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 15:23:02 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Started ProjetImmobilierApplication in 3.898 seconds (JVM running for 5.03)
+20-11-2019 15:32:47 [http-nio-8080-exec-3] WARN  org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+20-11-2019 15:45:50 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Starting ProjetImmobilierApplication on IN-LY-058 with PID 5380 (C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier\target\classes started by IN-LY-058 in C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier)
+20-11-2019 15:45:50 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+20-11-2019 15:45:50 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : No active profile set, falling back to default profiles: default
+20-11-2019 15:45:53 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 15:45:53 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Started ProjetImmobilierApplication in 3.69 seconds (JVM running for 4.924)
+20-11-2019 16:35:16 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Starting ProjetImmobilierApplication on IN-LY-058 with PID 6700 (C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier\target\classes started by IN-LY-058 in C:\Users\IN-LY-058\Documents\WorkSpace_JSP\ProjetImmobilier)
+20-11-2019 16:35:16 [main] DEBUG com.fr.adaming.ProjetImmobilierApplication : Running with Spring Boot v2.2.1.RELEASE, Spring v5.2.1.RELEASE
+20-11-2019 16:35:16 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : No active profile set, falling back to default profiles: default
+20-11-2019 16:35:19 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 16:35:20 [main] INFO  com.fr.adaming.ProjetImmobilierApplication : Started ProjetImmobilierApplication in 4.435 seconds (JVM running for 5.648)
+>>>>>>> 9d391ab8d2e2af20de91ba94c5c4f3ccd7696f66
