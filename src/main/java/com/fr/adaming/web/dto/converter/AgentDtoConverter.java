@@ -10,39 +10,60 @@ public class AgentDtoConverter {
 
 		public static Agent convertToDto(AgentSaveDto agentDto) {
 			Agent agent = new Agent();
-			agent.setId(agentDto.getId());
-			agent.setEmail(agentDto.getEmail());
-			agent.setFullname(agentDto.getFullname());
-			agent.setPwd(agentDto.getPwd());
-			agent.setTelephone(agentDto.getTelephone());
-			agent.setDateRecrutement(agentDto.getDateRecrutement());
-			return agent;
+			if(agentDto == null) {
+				return null;
+			}else {
+				agent.setId(agentDto.getId());
+				agent.setEmail(agentDto.getEmail());
+				agent.setFullname(agentDto.getFullname());
+				agent.setPwd(agentDto.getPwd());
+				agent.setTelephone(agentDto.getTelephone());
+				agent.setDateRecrutement(agentDto.getDateRecrutement());
+				return agent;
+			}
+			
 		}
 
 		public static AgentSaveDto convertToAgent(Agent agent) {
 			AgentSaveDto agentDto = new AgentSaveDto();
-			agentDto.setId(agent.getId());
-			agentDto.setEmail(agent.getEmail());
-			agentDto.setFullname(agent.getFullname());
-			agentDto.setPwd(agent.getPwd());
-			agentDto.setTelephone(agent.getTelephone());
-			agentDto.setDateRecrutement(agent.getDateRecrutement());
-			return agentDto;
+			if(agent == null) {
+				return null;
+			}else {
+				agentDto.setId(agent.getId());
+				agentDto.setEmail(agent.getEmail());
+				agentDto.setFullname(agent.getFullname());
+				agentDto.setPwd(agent.getPwd());
+				agentDto.setTelephone(agent.getTelephone());
+				agentDto.setDateRecrutement(agent.getDateRecrutement());
+				return agentDto;
+			}
+			
 		}
 		
-		public static List<Agent> convertDto(List<AgentSaveDto> AgentsDto) {
+		public static List<Agent> convertDto(List<AgentSaveDto> agentsDto) {
 			List<Agent> listAgents = new ArrayList<>();
-			for(AgentSaveDto dto : AgentsDto) {
-				listAgents.add(AgentDtoConverter.convertToDto(dto));
+			if(agentsDto == null) {
+				return null;
+			}else {
+				for(AgentSaveDto dto : agentsDto) {
+					listAgents.add(AgentDtoConverter.convertToDto(dto));
+				}
+				return listAgents;
 			}
-			return listAgents;
+			
+			
 		}
 		
-		public static List<AgentSaveDto> convertAgent(List<Agent> Agents) {
+		public static List<AgentSaveDto> convertAgent(List<Agent> agents) {
 			List<AgentSaveDto> listDtos = new ArrayList<>();
-			for(Agent agent : Agents) {
-				listDtos.add(AgentDtoConverter.convertToAgent(agent));
+			if(agents == null) {
+				return null;
+			} else {
+				for(Agent agent : agents) {
+					listDtos.add(AgentDtoConverter.convertToAgent(agent));
+				}
+				return listDtos;
 			}
-			return listDtos;
+			
 		}
 }
