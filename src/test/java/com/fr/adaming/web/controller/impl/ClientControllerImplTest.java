@@ -206,52 +206,44 @@ public class ClientControllerImplTest extends TestMvc {
 		
 	}
 	
-//	@Test
-//	@Sql(statements = "delete from client where id = 1455454", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
-//	public void saveClientWitEmailNull_shouldReturndNull() throws UnsupportedEncodingException, JsonProcessingException, Exception {
-//		//preparer les inputs
-//		ClientSaveDto c = new ClientSaveDto();
-//		c.setId(1455454L);
-//		c.setEmail(null);
-//		c.setFullname("nom1");
-//		c.setType(TypeClient.ACHETEUR);
-//		c.setTelephone(6657956941L);
-//		
-////		exception.expect(DataIntegrityViolationException.class);
-////		exception.expect(AssertionError.class);
-////		exception.expect(ConstraintViolationException.class);
-//
-//		String mvcresult = mvc
-//				.perform(post("/api/projetimmo/client/save").contentType(MediaType.APPLICATION_JSON)
-//						.content(mapper.writeValueAsString(c)))
-//				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-//
-//		ClientSaveDto dtoResult = mapper.readValue(mvcresult, ClientSaveDto.class);
-//		
-//		assertNull(dtoResult);
-//		
-//	}
+	@Test
+	@Sql(statements = "delete from client where id = 1455454", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	public void saveClientWitEmailNull_shouldReturndNull() throws UnsupportedEncodingException, JsonProcessingException, Exception {
+		//preparer les inputs
+		ClientSaveDto c = new ClientSaveDto();
+		c.setId(1455454L);
+		c.setEmail(null);
+		c.setFullname("nom1");
+		c.setType(TypeClient.ACHETEUR);
+		c.setTelephone(6657956941L);
+		
+
+		String mvcresult = mvc
+				.perform(post("/api/projetimmo/client/save").contentType(MediaType.APPLICATION_JSON)
+						.content(mapper.writeValueAsString(c)))
+				.andExpect(status().is(400)).andReturn().getResponse().getContentAsString();
+
+		assertEquals("", mvcresult);
+		
+	}
 	
 	
-//	@Test
-//	public void saveNullClient_shouldReturnNull () throws UnsupportedEncodingException, JsonProcessingException, Exception {
-//		//preparer les inputs
-//		ClientSaveDto c = new ClientSaveDto();
-//		
-//		
-//		String mvcresult = mvc
-//				.perform(post("/api/projetimmo/client/save").contentType(MediaType.APPLICATION_JSON)
-//						.content(mapper.writeValueAsString(c)))
-//				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-//
-//		
-//		assertEquals("", mvcresult);
-//		
-////		ClientSaveDto dtoResult = mapper.readValue(mvcresult, ClientSaveDto.class);
-////		
-////		assertNull(dtoResult);
-//	}
-//	
+	@Test
+	public void saveNullClient_shouldReturnNull () throws UnsupportedEncodingException, JsonProcessingException, Exception {
+		//preparer les inputs
+		ClientSaveDto c = new ClientSaveDto();
+		
+		
+		String mvcresult = mvc
+				.perform(post("/api/projetimmo/client/save").contentType(MediaType.APPLICATION_JSON)
+						.content(mapper.writeValueAsString(c)))
+				.andExpect(status().is(400)).andReturn().getResponse().getContentAsString();
+
+		
+		assertEquals("", mvcresult);
+		
+	}
+	
 	
 
 	
