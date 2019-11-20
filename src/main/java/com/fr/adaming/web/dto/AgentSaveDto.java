@@ -33,7 +33,7 @@ public class AgentSaveDto {
 	
 	private Long id;
 	
-	@NotNull
+	
 	@Digits(integer=10, fraction = 0)
 	private Long telephone;
 	

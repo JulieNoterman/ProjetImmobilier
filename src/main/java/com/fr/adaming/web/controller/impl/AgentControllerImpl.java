@@ -56,7 +56,7 @@ public class AgentControllerImpl implements IAgentController{
 	}
 
 	
-	public LoginAgentDto login(@RequestBody LoginAgentDto loginAgentDto) {
+	public LoginAgentDto login(LoginAgentDto loginAgentDto) {
 		System.out.println(loginAgentDto);
 		if (service.login(loginAgentDto.getEmail(), loginAgentDto.getPwd()) != null) {
 			return loginAgentDto;
@@ -67,13 +67,5 @@ public class AgentControllerImpl implements IAgentController{
 
 	}
 
-	@Override
-	public String login(String email, String pwd) {
-		if(service.login(email, pwd) != null) {
-			return "SUCCESS";
-		}else {
-			return "FAIL";
-		}
-		
-	}
+	
 }
