@@ -62,8 +62,8 @@ public class BienControllerImpl implements IBienController {
 	
 	
 	
-	public void delete(Bien bien) {
-		 service.delete(bien);
+	public void delete(BienDto bienDto) {
+		 service.delete(BienDtoConverter.convertToDto(bienDto));
 	}
 
 

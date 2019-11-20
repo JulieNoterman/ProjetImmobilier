@@ -33,7 +33,7 @@ public interface IBienController {
 	public BienDto update(@RequestBody @Valid BienDto bienDto);
 	
 	@RequestMapping(path = "/get-delete/{id}",method = RequestMethod.DELETE )
-	public void delete(@RequestBody Bien bien);
+	public void delete(@RequestBody BienDto bienDto);
 	
 	@RequestMapping(path = "/vente/{id}",method = RequestMethod.PUT )
 	public void venteById(@RequestBody Bien bien);

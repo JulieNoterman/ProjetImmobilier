@@ -32,7 +32,7 @@ public class AgentControllerImpl implements IAgentController{
 	}
 
 	
-	public AgentSaveDto save(@RequestBody AgentSaveDto agentDto) {
+	public AgentSaveDto save( AgentSaveDto agentDto) {
 		Agent a = service.save(AgentDtoConverter.convertToDto(agentDto));
 		if (a != null) {
 			return AgentDtoConverter.convertToAgent(a);
@@ -41,7 +41,7 @@ public class AgentControllerImpl implements IAgentController{
 	}
 	
 	
-	public AgentSaveDto update(@RequestBody AgentSaveDto agentDto) {
+	public AgentSaveDto update( AgentSaveDto agentDto) {
 		Agent a = service.update(AgentDtoConverter.convertToDto(agentDto));
 		if (a != null) {
 			return AgentDtoConverter.convertToAgent(a);
@@ -50,8 +50,8 @@ public class AgentControllerImpl implements IAgentController{
 	}
 
 	
-	public void deleteById(@RequestBody Agent agent) {
-		service.delete(agent);
+	public void deleteById( AgentSaveDto agentDto) {
+		service.delete(AgentDtoConverter.convertToDto(agentDto));
 		
 	}
 

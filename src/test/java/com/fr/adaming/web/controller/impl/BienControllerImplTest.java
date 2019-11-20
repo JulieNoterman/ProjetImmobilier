@@ -78,7 +78,7 @@ public class BienControllerImplTest extends TestMvc {
 		
 		String mvcresult = mvc.perform(post("/api/projetimmo/bien/save")
 		.contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(bien)))
-		.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+		.andExpect(status().is(400)).andReturn().getResponse().getContentAsString();
 		
 		BienDto dtoResult = mapper.readValue(mvcresult, BienDto.class);
 		
@@ -187,7 +187,7 @@ public class BienControllerImplTest extends TestMvc {
 		
 		String mvcresult = mvc.perform(delete("/api/projetimmo/bien/get-delete/{id}", 20500L )
 				.contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(b)))
-		        .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+		        .andExpect(status().is(400)).andReturn().getResponse().getContentAsString();
 				
 
 //		BienDto dtoResult = mapper.readValue(mvcresult, BienDto.class);
