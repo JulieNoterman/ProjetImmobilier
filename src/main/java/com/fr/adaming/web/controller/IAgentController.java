@@ -25,7 +25,7 @@ public interface IAgentController {
 	public AgentSaveDto save(@RequestBody @Valid AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/update", method = RequestMethod.PUT)
-	public AgentSaveDto update(@RequestBody @Valid AgentSaveDto agentDto);
+	public AgentSaveDto update(@RequestBody AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/get-delete/{id}", method = RequestMethod.DELETE)
 	public void deleteById(@RequestBody @Valid AgentSaveDto agentDto);
