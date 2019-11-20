@@ -1,9 +1,12 @@
 package com.fr.adaming.web.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+
+import com.fr.adaming.entity.Client;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,4 +34,6 @@ public class AgentSaveDto {
 	private Long telephone;
 	
 	private LocalDateTime dateRecrutement;
+	
+	private List<Client> client;
 }

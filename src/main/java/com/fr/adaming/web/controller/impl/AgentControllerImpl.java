@@ -33,12 +33,20 @@ public class AgentControllerImpl implements IAgentController{
 
 	
 	public AgentSaveDto save(@RequestBody AgentSaveDto agentDto) {
-		return AgentDtoConverter.convertToAgent(service.save(AgentDtoConverter.convertToDto(agentDto)));
+		Agent a = service.save(AgentDtoConverter.convertToDto(agentDto));
+		if (a != null) {
+			return AgentDtoConverter.convertToAgent(a);
+		}
+		return null;
 	}
 	
 	
 	public AgentSaveDto update(@RequestBody AgentSaveDto agentDto) {
-		return AgentDtoConverter.convertToAgent(service.update(AgentDtoConverter.convertToDto(agentDto)));
+		Agent a = service.update(AgentDtoConverter.convertToDto(agentDto));
+		if (a != null) {
+			return AgentDtoConverter.convertToAgent(a);
+		}
+		return null;
 	}
 
 	

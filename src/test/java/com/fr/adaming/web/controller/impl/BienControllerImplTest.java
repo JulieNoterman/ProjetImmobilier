@@ -5,8 +5,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -16,10 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Collection;
-import java.util.List;
-
-import javax.validation.ConstraintViolationException;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -29,14 +23,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.transaction.TransactionSystemException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fr.adaming.entity.Bien;
-import com.fr.adaming.entity.Client;
 import com.fr.adaming.enumeration.TypeClient;
 import com.fr.adaming.web.dto.BienDto;
 import com.fr.adaming.web.dto.ClientSaveDto;
