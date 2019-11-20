@@ -1774,3 +1774,10 @@ insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, nul
 =======
 >>>>>>> 506389e18c9745b89a27ed05beb8e80b897b1aab
 >>>>>>> 427a9044e7051c7dd344fba5151f481bc7428840
+20-11-2019 11:29:43 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 11:29:45 [main] WARN  org.hibernate.engine.jdbc.spi.SqlExceptionHelper : SQL Error: 23502, SQLState: 23502
+20-11-2019 11:29:45 [main] ERROR org.hibernate.engine.jdbc.spi.SqlExceptionHelper : NULL non permis pour la colonne "EMAIL"
+NULL not allowed for column "EMAIL"; SQL statement:
+insert into client (email, fullname, telephone, id_agent, type, id) values (?, ?, ?, ?, ?, ?) [23502-200]
+20-11-2019 11:31:03 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20-11-2019 11:31:30 [main] WARN  org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
