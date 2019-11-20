@@ -3,6 +3,7 @@ package com.fr.adaming.web.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
@@ -28,9 +29,11 @@ public class AgentSaveDto {
 	
 	@NotNull
 	private String pwd;
-
+	
+	
 	private Long id;
 	
+	@Digits(integer=10, fraction = 0)
 	private Long telephone;
 	
 	private LocalDateTime dateRecrutement;

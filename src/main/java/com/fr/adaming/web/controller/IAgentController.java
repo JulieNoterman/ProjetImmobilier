@@ -2,6 +2,9 @@ package com.fr.adaming.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,13 +22,13 @@ public interface IAgentController {
 	public AgentSaveDto getOneById(Long id);
 	
 	@RequestMapping(path = "/save", method = RequestMethod.POST)
-	public AgentSaveDto save(AgentSaveDto agentDto);
+	public AgentSaveDto save(@RequestBody @Valid AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/update", method = RequestMethod.PUT)
-	public AgentSaveDto update(AgentSaveDto agentDto);
+	public AgentSaveDto update(@RequestBody @Valid AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/get-delete/{id}", method = RequestMethod.DELETE)
-	public void deleteById(Agent agent);
+	public void deleteById(@RequestBody @Valid AgentSaveDto agentDto);
 	
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public String login(String Email, String pwd);

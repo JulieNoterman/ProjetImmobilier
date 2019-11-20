@@ -3,8 +3,8 @@ package com.fr.adaming.web.controller.impl;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -14,7 +14,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.io.UnsupportedEncodingException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +27,9 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fr.adaming.entity.Agent;
-import com.fr.adaming.entity.Bien;
-import com.fr.adaming.entity.Client;
 import com.fr.adaming.enumeration.TypeClient;
 import com.fr.adaming.web.dto.AgentSaveDto;
-import com.fr.adaming.web.dto.BienDto;
 import com.fr.adaming.web.dto.ClientSaveDto;
-import com.fr.adaming.web.dto.converter.BienDtoConverter;
 import com.fr.adaming.web.dto.converter.ClientDtoConverter;
 
 @RunWith(SpringRunner.class)
@@ -48,7 +42,7 @@ public class AgentControllerImplTest extends TestMvc {
 	@Test
 	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 	@Sql (statements = "delete from agent where id = 45" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
-		public void ListValidBien_shouldNotReturnEmptyList() throws UnsupportedEncodingException, Exception {
+		public void ListValidAgent_shouldNotReturnEmptyList() throws UnsupportedEncodingException, Exception {
 		
 
 		mvc.perform(get("/api/projetimmo/agent/get-all").contentType(MediaType.APPLICATION_JSON))
@@ -74,7 +68,7 @@ public class AgentControllerImplTest extends TestMvc {
 }
 	//ok
 	@Test
-	@Sql (statements = "delete from agent where id=1" ,executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql (statements = {"delete from agent where id=1","delete from agent where id=2" },executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void createValidAgent_shouldReturnAgentWithIdNotNUll() throws UnsupportedEncodingException, JsonProcessingException, Exception {
 		//prépare les inputs
 		
@@ -166,7 +160,7 @@ public class AgentControllerImplTest extends TestMvc {
 	//ok
 	@Test
 	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = {"delete from agent where id=45","delete from agent where id=789"}, executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 	public void updateNotValidAgent_shouldNotReturnAgentWithIdNull() throws UnsupportedEncodingException, JsonProcessingException, Exception {
 		
 		AgentSaveDto a = new AgentSaveDto();
@@ -193,7 +187,7 @@ public class AgentControllerImplTest extends TestMvc {
 	//ok
 	@Test
 	@Sql(statements = "insert into agent values(45, 'theo@gmail.com', 'theo corneloup', 7744553322, null, '78945612')", executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
-	@Sql(statements = "delete from agent where id=45", executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
+	@Sql(statements = {"delete from agent where id=45","delete from agent where id=77"}, executionPhase = ExecutionPhase.AFTER_TEST_METHOD)
 		public void deleteNotValidAgent_shouldReturnFalse() throws UnsupportedEncodingException, JsonProcessingException, Exception {
 		
 		AgentSaveDto a = new AgentSaveDto();
@@ -201,7 +195,7 @@ public class AgentControllerImplTest extends TestMvc {
 		
 		String mvcresult = mvc.perform(delete("/api/projetimmo/agent/get-delete/{id}", 77L )
 				.contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(a)))
-		        .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+		        .andExpect(status().is(400)).andReturn().getResponse().getContentAsString();
 				
 
 //		BienDto dtoResult = mapper.readValue(mvcresult, BienDto.class);
@@ -226,7 +220,7 @@ public class AgentControllerImplTest extends TestMvc {
 		
 		String mvcresult = mvc.perform(delete("/api/projetimmo/agent/get-delete/{id}" , 45L )
 		.contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(a)))
-        .andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+        .andExpect(status().is(400)).andReturn().getResponse().getContentAsString();
 		
 
 		assertEquals("",mvcresult);
@@ -255,6 +249,7 @@ public class AgentControllerImplTest extends TestMvc {
 		c.setEmail("dylan.salos@gmail.com");
 		c.setFullname("aaaa");
 		c.setType(TypeClient.ACHETEUR);
+		c.setTelephone(9876543210L);
 		List<ClientSaveDto> clients = new ArrayList<ClientSaveDto>();
 		clients.add(c);
 		
@@ -267,15 +262,15 @@ public class AgentControllerImplTest extends TestMvc {
 						.content(mapper.writeValueAsString(a)))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
-		ClientSaveDto dtoResult = mapper.readValue(mvcresult, ClientSaveDto.class);
+		AgentSaveDto dtoResult = mapper.readValue(mvcresult, AgentSaveDto.class);
 
 		// verifier le resultat
 		assertNotNull(dtoResult);
-//		assertNotNull(a.getEmail());
-//		assertNotNull(a.getFullname());
-//		assertThat(a.getClient()).asList().hasSize(1);
-//		assertThat(a.getClient().get(0)).hasFieldOrPropertyWithValue("fullname", "aaaa");
-//		assertThat(a.getClient().get(0)).hasFieldOrPropertyWithValue("email", "dylan.salos@gmail.com");
+		assertNotNull(a.getEmail());
+		assertNotNull(a.getFullname());
+		assertThat(a.getClient()).asList().hasSize(1);
+		assertThat(a.getClient().get(0)).hasFieldOrPropertyWithValue("fullname", "aaaa");
+		assertThat(a.getClient().get(0)).hasFieldOrPropertyWithValue("email", "dylan.salos@gmail.com");
 	}	
 	
 	
