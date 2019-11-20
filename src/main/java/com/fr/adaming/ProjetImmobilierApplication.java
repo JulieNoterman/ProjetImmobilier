@@ -13,9 +13,7 @@ public class ProjetImmobilierApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetImmobilierApplication.class, args);
 		
-		logger.warn("coucou");
-		logger.error("BOOOOOOOOOOOB");
-		logger.debug("BOOOOOOOOOOOB2");
+		
 	}
 
 }
