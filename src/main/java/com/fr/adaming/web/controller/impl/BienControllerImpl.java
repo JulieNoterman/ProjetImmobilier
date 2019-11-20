@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fr.adaming.entity.Bien;
@@ -14,6 +15,7 @@ import com.fr.adaming.web.dto.converter.BienDtoConverter;
 
 
 @RestController
+@CrossOrigin
 public class BienControllerImpl implements IBienController {
 
 	@Autowired

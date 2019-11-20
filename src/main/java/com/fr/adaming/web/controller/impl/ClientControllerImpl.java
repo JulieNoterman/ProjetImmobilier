@@ -3,6 +3,7 @@ package com.fr.adaming.web.controller.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fr.adaming.entity.Client;
@@ -13,6 +14,7 @@ import com.fr.adaming.web.dto.converter.ClientDtoConverter;
 
 
 @RestController
+@CrossOrigin
 public class ClientControllerImpl implements IClientController{
 	
 	@Autowired
