@@ -9,7 +9,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -147,7 +146,6 @@ public class ClientServiceImplTest {
 		Client returnedClient = service.save(c);
 		
 		assertNull(returnedClient);
-		assertNull(returnedClient.getId());
 		
 	}
 	
